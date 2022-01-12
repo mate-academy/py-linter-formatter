@@ -15,7 +15,7 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
          "source": "flake8"}
         for i in range(len(errors))],
         "path": str(file_path),
-        "status": "failed"}
+        "status": "failed" if len(errors) else "passed"}
 
 
 def format_linter_report(linter_report: dict) -> list:
