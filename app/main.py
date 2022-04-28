@@ -18,7 +18,7 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
         "status": "passed" if not errors else "failed", }
 
 
-def format_linter_report(linter_report: dict) -> list[dict]:
+def format_linter_report(linter_report: dict) -> list:
     return [{"errors": [
         dict(line=error["line_number"],
              column=error["column_number"],
