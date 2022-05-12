@@ -5,9 +5,3 @@
 .DS_Store
 venv/
 .pytest_cache/
-tests/
-.flake8
-.github/workflows/test.yml
-.gitignore
-README.md
-requirements.txt
