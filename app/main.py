@@ -6,8 +6,8 @@ def format_linter_error(error: dict) -> dict:
         "name": error["code"],
         "source": "flake8"
     }
-    
-    
+
+
 def format_single_linter_file(file_path: str, errors: list) -> dict:
     return {
         "errors": [format_linter_error(err) for err in errors],
