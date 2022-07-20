@@ -1,9 +1,10 @@
 def format_linter_error(error: dict) -> dict:
     return {
-        key: value for (key, value) in
-        zip(["line", "column", "message", "name", "source"],
-            [error["line_number"], error["column_number"],
-             error["text"], error["code"], "flake8"])
+        "line": error["line_number"],
+        "column": error["column_number"],
+        "message": error["text"],
+        "name": error["code"],
+        "source": "flake8"
     }
 
 
