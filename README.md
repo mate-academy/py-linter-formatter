@@ -2,7 +2,7 @@
 
 - Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before start
 
-The flake8 linter gives the following error report when checking a directory with source code files:
+The `flake8` linter gives the following error report when checking a directory with source code files:
 ```python
 errors = {
     "./test_source_code_2.py": [],
@@ -100,15 +100,15 @@ errors = {
 }
 ```
 Here `errors` is a dictionary, where the keys are the path to the file, 
-and the value of this key is a list of errors, where each error is a dictionary.
+and the value of this key is a list of errors, where each is a dictionary.
 
 But we store the execution results in a slightly different format.
-Write 3 functions to convert the report in the format we need.
-1. `format_linter_error` - formats a single error.
-2. `format_single_linter_file` - formats all errors for a particular file.
-3. `format_linter_report` - formats all errors for all files in the report.
+Write 3 functions to convert the report into the format we need:
+1. `format_linter_error` - formats a single error;
+2. `format_single_linter_file` - formats all errors for a particular file;
+3. `format_linter_report` - formats all errors for all report files.
 
-All functions must contain only the `return` construct.
+All functions must contain only the `return` keyword.
 
 Required storage format:
 ```python
