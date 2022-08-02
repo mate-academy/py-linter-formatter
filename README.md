@@ -2,8 +2,7 @@
 
 - Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before start
 
-Линтер flake8 выдает такой отчет об ошибках при проверке каталога с файлами исходного 
-кода:
+The `flake8` linter gives the following error report when checking a directory with source code files:
 ```python
 errors = {
     "./test_source_code_2.py": [],
@@ -100,18 +99,18 @@ errors = {
     ],
 }
 ```
-Здесь `errors` это словарь, в котором ключи - путь к файлу, а значение этого ключа -
-список ошибок, где каждая ошибка - словарь
+Here `errors` is a dictionary, where the keys are the path to the file, 
+and the value of this key is a list of errors, where each is a dictionary.
 
-Но мы храним результаты выполнения немного в другом формате.
-Напиши 3 функции, чтобы преобразовать отчет в нужном нам формате.
-1. `format_linter_error` - форматирует отдельно взятую ошибку
-2. `format_single_linter_file` - форматирует все ошибки для конкретного файла
-3. `format_linter_report` - форматирует все ошибки для всех файлов в отчете
+But we store the execution results in a slightly different format.
+Write 3 functions to convert the report into the format we need:
+1. `format_linter_error` - formats a single error;
+2. `format_single_linter_file` - formats all errors for a particular file;
+3. `format_linter_report` - formats all errors for all report files.
 
-Все функции должны вмещать в себе только конструкцию `return`
+All functions must contain only the `return` keyword.
 
-Требуемый формат хранения:
+Required storage format:
 ```python
 errors = [
     {"errors": [], "path": "./test_source_code_2.py", "status": "passed"},
