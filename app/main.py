@@ -11,35 +11,16 @@ def format_linter_error(error: dict) -> dict:
 def format_single_linter_file(file_path: str, errors: list) -> dict:
     return {
         "errors": [
-            {
-                "line": n["line_number"],
-                "column": n["column_number"],
-                "message": n["text"],
-                "name": n["code"],
-                "source": "flake8",
-            }
+            format_linter_error(n)
             for n in errors
         ],
         "path": file_path,
-        "status": "failed",
+        "status": ("passed" if len(errors) == 0 else "failed"),
     }
 
 
 def format_linter_report(linter_report: dict) -> list:
     return [
-        {
-            "errors": [
-                {
-                    "line": val["line_number"],
-                    "column": val["column_number"],
-                    "message": val["text"],
-                    "name": val["code"],
-                    "source": "flake8",
-                }
-                for val in linter_report[err]
-            ],
-            "path": err,
-            "status": ("passed" if len(linter_report[err]) == 0 else "failed"),
-        }
+        format_single_linter_file(err, linter_report[err])
         for err in linter_report
     ]
