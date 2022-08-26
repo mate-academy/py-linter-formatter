@@ -21,6 +21,6 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
 
 def format_linter_report(linter_report: dict) -> list:
     # white your code here
-    return [format_single_linter_file(key, values)
-            for key, values in linter_report.items()]
+    return [format_single_linter_file(file_path_error, error_description)
+            for file_path_error, error_description in linter_report.items()]
     pass
