@@ -1,4 +1,5 @@
 import pytest
+import re
 import ast
 import inspect
 
@@ -343,3 +344,24 @@ def test_format_linter_report(errors_linter, errors_mate):
         f"Function 'format_linter_report' should return {errors_mate} "
         f"when 'errors' equals to {errors_linter}"
     )
+
+
+def test_removed_comment():
+    import app
+    with open(app.main.__file__, "r") as f:
+        file_content = f.read()
+        comment = re.compile("# write your code here")
+        assert not comment.search(
+            file_content
+        ), "You have to remove the unnecessary comment '# write your code here'"
+
+
+def test_double_quotes_instead_of_single():
+    import app
+    with open(app.main.__file__, "r") as f:
+        file_content = f.read()
+        comment = re.compile("\'")
+        assert not comment.search(
+            file_content
+        ), "You have to use a double quotes \"\" instead of single \'\'"
+
