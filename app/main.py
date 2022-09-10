@@ -1,3 +1,4 @@
+
 def format_linter_error(error: dict) -> dict:
     # white your code here
     pass
