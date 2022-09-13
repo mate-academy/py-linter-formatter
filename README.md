@@ -337,3 +337,5 @@ errors = [
     },
 ]
 ```
+
+### Note: Check your code using this [checklist](checklist.md) before pushing your solution.
