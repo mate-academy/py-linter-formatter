@@ -20,4 +20,3 @@ def format_linter_report(linter_report: dict) -> list:
              "path": f"{key}",
              "status": "passed" if linter_report[key] == [] else "failed"}
             for key, value in linter_report.items()]
-
