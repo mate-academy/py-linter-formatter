@@ -10,7 +10,7 @@ def format_linter_error(error: dict) -> dict:
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
     return {
-        "errors" : [format_linter_error(i) for i in errors],
+        "errors" : [format_linter_error(count_err) for count_err in errors],
         "path" : file_path,
         "status": ("failed" if len(errors) != 0 else "passed")
     }
@@ -18,6 +18,6 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
 
 def format_linter_report(linter_report: dict) -> list:
     return [
-        format_single_linter_file(i, linter_report.get(i))
-        for i in linter_report
+        format_single_linter_file(count_val, linter_report.get(count_val))
+        for count_val in linter_report
     ]
