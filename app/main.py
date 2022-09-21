@@ -1,13 +1,14 @@
 def format_linter_error(error: dict) -> dict:
-    return(
-        {
-            "column": error["column_number"],
-            "line": error["line_number"],
-            "message": error["text"],
-            "name": error["code"],
-            "source": "flake8",
-        }
-    )
+    return\
+        (
+            {
+                "column": error["column_number"],
+                "line": error["line_number"],
+                "message": error["text"],
+                "name": error["code"],
+                "source": "flake8",
+            }
+        )
     pass
 
 
