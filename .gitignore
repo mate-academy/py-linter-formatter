@@ -4,4 +4,4 @@
 .env
 .DS_Store
 venv/
-.gitignore
+.pytest_cache
