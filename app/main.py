@@ -6,7 +6,7 @@ def format_linter_error(error: dict) -> dict:
         "message": error["text"],
         "name": error["code"],
         "source": "flake8"
-           }
+    }
 
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
@@ -14,13 +14,7 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
     return {
         "errors":
             [
-                {
-                    "line": error['line_number'],
-                    "column": error["column_number"],
-                    "message": error["text"],
-                    "name": error["code"],
-                    "source": "flake8"
-                }
+                format_linter_error(error)
                 for error in errors
             ],
         "path": file_path,
@@ -30,28 +24,13 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
 
 def format_linter_report(linter_report: dict) -> list:
 
-    
-
     return [
-                {
-                    "errors": [],
-                    "path": list({report for report in linter_report})[1],
-                    "status": "passed"
-                },
-
-                [{
-                    "errors":
-                    [
-                        {
-                            "line": error['line_number'],
-                            "column": error["column_number"],
-                            "message": error["text"],
-                            "name": error["code"],
-                            "source": "flake8"
-                        }
-                        # for error in linter_report[list(linter_report)[1]]
-                    ],
-                    "path": error["filename"],
-                    "status": "failed"
-            } for error in linter_report[list(linter_report)[1]]]
-        ]
+        {
+            "errors": [],
+            "path": list(linter_report)[0],
+            "status": "passed"
+        }] + [
+            format_single_linter_file(key, value)
+            for key, value in linter_report.items()
+            if value != []
+    ]
