@@ -1,14 +1,8 @@
 import pytest
-import re
 import ast
 import inspect
 
-from app.main import (
-    format_linter_error,
-    format_single_linter_file,
-    format_linter_report,
-)
-
+from app import main
 
 @pytest.mark.parametrize(
     "error_linter,error_mate",
@@ -69,7 +63,7 @@ from app.main import (
     ],
 )
 def test_format_linter_error(error_linter, error_mate):
-    assert format_linter_error(error_linter) == error_mate, (
+    assert main.format_linter_error(error_linter) == error_mate, (
         f"Function 'format_linter_error' should return {error_mate}, "
         f"when 'error' equals to {error_linter}"
     )
@@ -78,9 +72,9 @@ def test_format_linter_error(error_linter, error_mate):
 @pytest.mark.parametrize(
     "func",
     [
-        format_linter_error,
-        format_single_linter_file,
-        format_linter_report,
+        main.format_linter_error,
+        main.format_single_linter_file,
+        main.format_linter_report,
     ],
 )
 def test_format_functions_one_line(func):
@@ -139,7 +133,7 @@ def test_format_functions_one_line(func):
     ],
 )
 def test_format_single_linter_file(file_path, errors, result):
-    assert format_single_linter_file(file_path, errors) == result, (
+    assert main.format_single_linter_file(file_path, errors) == result, (
         f"Function 'format_single_linter_file' should return {result}, "
         f"when 'file_path' equals to {file_path}, "
         f"and 'errors' equals to {errors}"
@@ -340,28 +334,19 @@ def test_format_single_linter_file(file_path, errors, result):
     ],
 )
 def test_format_linter_report(errors_linter, errors_mate):
-    assert format_linter_report(errors_linter) == errors_mate, (
+    assert main.format_linter_report(errors_linter) == errors_mate, (
         f"Function 'format_linter_report' should return {errors_mate} "
         f"when 'errors' equals to {errors_linter}"
     )
 
 
-def test_removed_comment():
-    import app
-    with open(app.main.__file__, "r") as f:
-        file_content = f.read()
-        comment = re.compile("# write your code here")
-        assert not comment.search(
-            file_content
-        ), "You have to remove the unnecessary comment '# write your code here'"
+def test_comment_deleted():
+    lines = inspect.getsource(main)
+    assert "# write your code here" not in lines, ("Remove the unnecessary"
+        " comment '# write your code here'")
 
 
 def test_double_quotes_instead_of_single():
-    import app
-    with open(app.main.__file__, "r") as f:
-        file_content = f.read()
-        comment = re.compile("\'")
-        assert not comment.search(
-            file_content
-        ), "You have to use a double quotes \"\" instead of single \'\'"
-
+    lines = inspect.getsource(main)
+    assert "\'" not in lines, ("You have to use a double quotes \"\" instead"
+                               " of single \'\'")
