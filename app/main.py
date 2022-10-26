@@ -30,9 +30,9 @@ def format_linter_report(linter_report: dict) -> list:
     return [
         {
             "errors": [],
-            "path": report,
+            "path": file,
             "status": "passed"
-        } if linter_report[report] == []
+        } if linter_report[file] == []
         else
         {
             "errors":
@@ -44,10 +44,10 @@ def format_linter_report(linter_report: dict) -> list:
                         "name": error["code"],
                         "source": "flake8"
                     }
-                    for error in linter_report[report]
+                    for error in linter_report[file]
                 ],
-            "path": report,
+            "path": file,
             "status": "failed"
         }
-        for report in linter_report
+        for file in linter_report
     ]
