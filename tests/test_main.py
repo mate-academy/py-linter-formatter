@@ -340,7 +340,7 @@ def test_format_single_linter_file(file_path, errors, result):
     ],
 )
 def test_format_linter_report(errors_linter, errors_mate):
-    assert format_linter_report(errors_linter) == errors_mate, (
+git     assert format_linter_report(errors_linter) == errors_mate, (
         f"Function 'format_linter_report' should return {errors_mate} "
         f"when 'errors' equals to {errors_linter}"
     )
