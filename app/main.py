@@ -12,7 +12,7 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
     return {"errors": [format_linter_error(char) for char in errors],
             "path": file_path,
             "status": "passed" if errors == [] else "failed"
-    }
+           }
 
 
 def format_linter_report(linter_report: dict) -> list:
