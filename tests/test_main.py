@@ -214,7 +214,7 @@ def test_format_single_linter_file(file_path, errors, result):
                         "column_number": 80,
                         "text": "line too long (99 > 79 characters)",
                         "physical_line": '    return f"I like to filter, rounding, doubling, '
-                                         "store and decorate numbers: {', '.join(items)}!\"\n",
+                        "store and decorate numbers: {', '.join(items)}!\"\n",
                     },
                 ],
                 "./test_source_code_1.py": [
