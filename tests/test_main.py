@@ -21,7 +21,7 @@ from app.main import (
                 "column_number": 80,
                 "text": "line too long (99 > 79 characters)",
                 "physical_line": '    return f"I like to filter, rounding, doubling, '
-                                 "store and decorate numbers: {', '.join(items)}!\"",
+                "store and decorate numbers: {', '.join(items)}!\"",
             },
             {
                 "line": 18,
@@ -39,15 +39,15 @@ from app.main import (
                 "column_number": 74,
                 "text": "multiple statements on one line (semicolon)",
                 "physical_line": '        new_items = [f"{key} -> {value}" for key, '
-                                 "value in items.items()]; return func(new_items)\n",
+                "value in items.items()]; return func(new_items)\n",
             },
             {
-                    "line": 3,
-                    "column": 74,
-                    "message": "multiple statements on one line (semicolon)",
-                    "name": "E702",
-                    "source": "flake8",
-                },
+                "line": 3,
+                "column": 74,
+                "message": "multiple statements on one line (semicolon)",
+                "name": "E702",
+                "source": "flake8",
+            },
         ),
         (
             {
@@ -59,12 +59,12 @@ from app.main import (
                 "physical_line": "def number_filter(func):\n",
             },
             {
-                    "line": 15,
-                    "column": 1,
-                    "message": "expected 2 blank lines, found 1",
-                    "name": "E302",
-                    "source": "flake8",
-                },
+                "line": 15,
+                "column": 1,
+                "message": "expected 2 blank lines, found 1",
+                "name": "E302",
+                "source": "flake8",
+            },
         ),
     ],
 )
@@ -86,7 +86,7 @@ def test_format_linter_error(error_linter, error_mate):
 def test_format_functions_one_line(func):
     code = inspect.getsource(func)
     assert (
-            isinstance(ast.parse(code).body[0].body[0], ast.Return) is True
+        isinstance(ast.parse(code).body[0].body[0], ast.Return) is True
     ), f"Function '{func.__name__}' should contain only return statement"
 
 
@@ -160,7 +160,7 @@ def test_format_single_linter_file(file_path, errors, result):
                         "column_number": 80,
                         "text": "line too long (99 > 79 characters)",
                         "physical_line": '    return f"I like to filter, rounding, doubling, '
-                                         "store and decorate numbers: {', '.join(items)}!\"",
+                        "store and decorate numbers: {', '.join(items)}!\"",
                     },
                     {
                         "code": "W292",
@@ -169,7 +169,7 @@ def test_format_single_linter_file(file_path, errors, result):
                         "column_number": 100,
                         "text": "no newline at end of file",
                         "physical_line": '    return f"I like to filter, rounding, doubling, '
-                                         "store and decorate numbers: {', '.join(items)}!\"",
+                        "store and decorate numbers: {', '.join(items)}!\"",
                     },
                 ],
                 "./source_code_1.py": [
@@ -180,7 +180,7 @@ def test_format_single_linter_file(file_path, errors, result):
                         "column_number": 74,
                         "text": "multiple statements on one line (semicolon)",
                         "physical_line": '        new_items = [f"{key} -> {value}" for key, '
-                                         "value in items.items()]; return func(new_items)\n",
+                        "value in items.items()]; return func(new_items)\n",
                     },
                     {
                         "code": "E501",
@@ -189,7 +189,7 @@ def test_format_single_linter_file(file_path, errors, result):
                         "column_number": 80,
                         "text": "line too long (97 > 79 characters)",
                         "physical_line": '        new_items = [f"{key} -> {value}" for key, '
-                                         "value in items.items()]; return func(new_items)\n",
+                        "value in items.items()]; return func(new_items)\n",
                     },
                     {
                         "code": "E302",
@@ -233,7 +233,7 @@ def test_format_single_linter_file(file_path, errors, result):
                         "column_number": 80,
                         "text": "line too long (84 > 79 characters)",
                         "physical_line": '            "decorate numbers: 1 -> 2, 2 -> 4, 6 -> 12, -111 -> -222, -50 -> '
-                                         '-100!",\n',
+                        '-100!",\n',
                     },
                     {
                         "code": "W292",
@@ -246,96 +246,96 @@ def test_format_single_linter_file(file_path, errors, result):
                 ],
             },
             [
-                    {"errors": [], "path": "./test_source_code_2.py", "status": "passed"},
-                    {
-                        "errors": [
-                            {
-                                "line": 18,
-                                "column": 80,
-                                "message": "line too long (99 > 79 characters)",
-                                "name": "E501",
-                                "source": "flake8",
-                            },
-                            {
-                                "line": 18,
-                                "column": 100,
-                                "message": "no newline at end of file",
-                                "name": "W292",
-                                "source": "flake8",
-                            },
-                        ],
-                        "path": "./source_code_2.py",
-                        "status": "failed",
-                    },
-                    {
-                        "errors": [
-                            {
-                                "line": 3,
-                                "column": 74,
-                                "message": "multiple statements on one line (semicolon)",
-                                "name": "E702",
-                                "source": "flake8",
-                            },
-                            {
-                                "line": 3,
-                                "column": 80,
-                                "message": "line too long (97 > 79 characters)",
-                                "name": "E501",
-                                "source": "flake8",
-                            },
-                            {
-                                "line": 15,
-                                "column": 1,
-                                "message": "expected 2 blank lines, found 1",
-                                "name": "E302",
-                                "source": "flake8",
-                            },
-                            {
-                                "line": 27,
-                                "column": 1,
-                                "message": "too many blank lines (6)",
-                                "name": "E303",
-                                "source": "flake8",
-                            },
-                            {
-                                "line": 31,
-                                "column": 80,
-                                "message": "line too long (99 > 79 characters)",
-                                "name": "E501",
-                                "source": "flake8",
-                            },
-                        ],
-                        "path": "./source_code_1.py",
-                        "status": "failed",
-                    },
-                    {
-                        "errors": [
-                            {
-                                "line": 4,
-                                "column": 1,
-                                "message": "expected 2 blank lines, found 1",
-                                "name": "E302",
-                                "source": "flake8",
-                            },
-                            {
-                                "line": 32,
-                                "column": 80,
-                                "message": "line too long (84 > 79 characters)",
-                                "name": "E501",
-                                "source": "flake8",
-                            },
-                            {
-                                "line": 112,
-                                "column": 6,
-                                "message": "no newline at end of file",
-                                "name": "W292",
-                                "source": "flake8",
-                            },
-                        ],
-                        "path": "./test_source_code_1.py",
-                        "status": "failed",
-                    },
-                ],
+                {"errors": [], "path": "./test_source_code_2.py", "status": "passed"},
+                {
+                    "errors": [
+                        {
+                            "line": 18,
+                            "column": 80,
+                            "message": "line too long (99 > 79 characters)",
+                            "name": "E501",
+                            "source": "flake8",
+                        },
+                        {
+                            "line": 18,
+                            "column": 100,
+                            "message": "no newline at end of file",
+                            "name": "W292",
+                            "source": "flake8",
+                        },
+                    ],
+                    "path": "./source_code_2.py",
+                    "status": "failed",
+                },
+                {
+                    "errors": [
+                        {
+                            "line": 3,
+                            "column": 74,
+                            "message": "multiple statements on one line (semicolon)",
+                            "name": "E702",
+                            "source": "flake8",
+                        },
+                        {
+                            "line": 3,
+                            "column": 80,
+                            "message": "line too long (97 > 79 characters)",
+                            "name": "E501",
+                            "source": "flake8",
+                        },
+                        {
+                            "line": 15,
+                            "column": 1,
+                            "message": "expected 2 blank lines, found 1",
+                            "name": "E302",
+                            "source": "flake8",
+                        },
+                        {
+                            "line": 27,
+                            "column": 1,
+                            "message": "too many blank lines (6)",
+                            "name": "E303",
+                            "source": "flake8",
+                        },
+                        {
+                            "line": 31,
+                            "column": 80,
+                            "message": "line too long (99 > 79 characters)",
+                            "name": "E501",
+                            "source": "flake8",
+                        },
+                    ],
+                    "path": "./source_code_1.py",
+                    "status": "failed",
+                },
+                {
+                    "errors": [
+                        {
+                            "line": 4,
+                            "column": 1,
+                            "message": "expected 2 blank lines, found 1",
+                            "name": "E302",
+                            "source": "flake8",
+                        },
+                        {
+                            "line": 32,
+                            "column": 80,
+                            "message": "line too long (84 > 79 characters)",
+                            "name": "E501",
+                            "source": "flake8",
+                        },
+                        {
+                            "line": 112,
+                            "column": 6,
+                            "message": "no newline at end of file",
+                            "name": "W292",
+                            "source": "flake8",
+                        },
+                    ],
+                    "path": "./test_source_code_1.py",
+                    "status": "failed",
+                },
+            ],
         )
     ],
 )
