@@ -95,46 +95,46 @@ def test_format_functions_one_line(func):
     [
         (
             "./source_code_2.py",
-                [
+            [
+                {
+                    "code": "E501",
+                    "filename": "./source_code_2.py",
+                    "line_number": 18,
+                    "column_number": 80,
+                    "text": "line too long (99 > 79 characters)",
+                    "physical_line": '    return f"I like to filter, rounding, doubling, '
+                    "store and decorate numbers: {', '.join(items)}!\"",
+                },
+                {
+                    "code": "W292",
+                    "filename": "./source_code_2.py",
+                    "line_number": 18,
+                    "column_number": 100,
+                    "text": "no newline at end of file",
+                    "physical_line": '    return f"I like to filter, rounding, doubling, '
+                    "store and decorate numbers: {', '.join(items)}!\"",
+                },
+            ],
+            {
+                "errors": [
                     {
-                        "code": "E501",
-                        "filename": "./source_code_2.py",
-                        "line_number": 18,
-                        "column_number": 80,
-                        "text": "line too long (99 > 79 characters)",
-                        "physical_line": '    return f"I like to filter, rounding, doubling, '
-                                         "store and decorate numbers: {', '.join(items)}!\"",
+                        "line": 18,
+                        "column": 80,
+                        "message": "line too long (99 > 79 characters)",
+                        "name": "E501",
+                        "source": "flake8",
                     },
                     {
-                        "code": "W292",
-                        "filename": "./source_code_2.py",
-                        "line_number": 18,
-                        "column_number": 100,
-                        "text": "no newline at end of file",
-                        "physical_line": '    return f"I like to filter, rounding, doubling, '
-                                         "store and decorate numbers: {', '.join(items)}!\"",
+                        "line": 18,
+                        "column": 100,
+                        "message": "no newline at end of file",
+                        "name": "W292",
+                        "source": "flake8",
                     },
                 ],
-                {
-                    "errors": [
-                        {
-                            "line": 18,
-                            "column": 80,
-                            "message": "line too long (99 > 79 characters)",
-                            "name": "E501",
-                            "source": "flake8",
-                        },
-                        {
-                            "line": 18,
-                            "column": 100,
-                            "message": "no newline at end of file",
-                            "name": "W292",
-                            "source": "flake8",
-                        },
-                    ],
-                    "path": "./source_code_2.py",
-                    "status": "failed",
-                },
+                "path": "./source_code_2.py",
+                "status": "failed",
+            },
         )
     ],
 )
@@ -348,11 +348,13 @@ def test_format_linter_report(errors_linter, errors_mate):
 
 def test_comment_deleted():
     lines = inspect.getsource(main)
-    assert "# write your code here" not in lines, ("Remove the unnecessary"
-                                                   " comment '# write your code here'")
+    assert "# write your code here" not in lines, (
+        "Remove the unnecessary" " comment '# write your code here'"
+    )
 
 
 def test_double_quotes_instead_of_single():
     lines = inspect.getsource(main)
-    assert "\'" not in lines, ("You have to use a double quotes \"\" instead"
-                               " of single \'\'")
+    assert "'" not in lines, (
+        'You have to use a double quotes "" instead' " of single ''"
+    )
