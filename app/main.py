@@ -20,4 +20,3 @@ def format_linter_report(linter_report: dict) -> list:
     return [format_single_linter_file(path_name, list_of_errors)
             for path_name, list_of_errors in linter_report.items()
             ]
-
