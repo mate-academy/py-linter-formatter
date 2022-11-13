@@ -348,8 +348,8 @@ def test_format_linter_report(errors_linter, errors_mate):
 
 def test_comment_deleted():
     lines = inspect.getsource(main)
-    assert "# write your code here" not in lines, (
-        "Remove the unnecessary" " comment '# write your code here'"
+    assert "#write your code here" not in lines, (
+        "Remove the unnecessary" " comment '#write your code here'"
     )
 
 
