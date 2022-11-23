@@ -18,6 +18,6 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
 
 def format_linter_report(linter_report: dict) -> list:
     return [
-        format_single_linter_file(key, values)
-        for key, values in linter_report.items()
+        format_single_linter_file(source_of_file, errors_report)
+        for source_of_file, errors_report in linter_report.items()
     ]
