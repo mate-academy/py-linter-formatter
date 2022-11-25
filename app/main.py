@@ -17,7 +17,10 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
 
 
 def format_linter_report(linter_report: dict) -> list:
+    """
+    ar its keys from dict linter_report
+    """
     return [
         format_single_linter_file(ar, linter_report[ar])
-        for ar in linter_report
+        for ar in linter_report.keys()
     ]
