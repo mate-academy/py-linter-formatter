@@ -23,8 +23,8 @@ def format_linter_report(linter_report: dict) -> list:
     return [
         {
             "errors": [format_linter_error(error) for error in file],
-            "path": i,
+            "path": path,
             "status": "failed" if file else "passed"
         }
-        for i, file in linter_report.items()
+        for path, file in linter_report.items()
     ]
