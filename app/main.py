@@ -1,4 +1,3 @@
-
 def format_linter_error(error: dict) -> dict:
     return {
         "line": error["line_number"],
@@ -17,9 +16,6 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
     }
 
 
-def format_linter_report(linter_report: dict) -> list:
-    return [
-        format_single_linter_file(
-            file, linter_report[file]
-        ) for file in linter_report
-    ]
+def format_linter_report(lin_rep: dict) -> list:
+    return \
+        [format_single_linter_file(file, lin_rep[file]) for file in lin_rep]
