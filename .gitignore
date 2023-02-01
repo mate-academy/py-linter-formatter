@@ -5,4 +5,4 @@
 .DS_Store
 venv/
 .pytest_cache/
-.flake8
+__pycache__
