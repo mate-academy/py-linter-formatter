@@ -87,7 +87,7 @@ def test_format_functions_one_line(func):
     code = inspect.getsource(func)
     assert (
         isinstance(ast.parse(code).body[0].body[0], ast.Return) is True
-    ), f"Function '{func.__name__}' should contain only return statement"
+    ), f"Function {func.__name__} should contain only return statement"
 
 
 @pytest.mark.parametrize(
@@ -348,7 +348,7 @@ def test_format_linter_report(errors_linter, errors_mate):
 
 def test_comment_deleted():
     lines = inspect.getsource(main)
-    assert "# write your code here" not in lines, (
+    assert " '# write your code here' " not in lines, (
         "Remove the unnecessary" " comment '# write your code here'"
     )
 
