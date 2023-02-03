@@ -1,6 +1,3 @@
-from typing import Set
-
-
 def format_linter_error(error: dict) -> dict:
     return {
         "line": error["line_number"],
