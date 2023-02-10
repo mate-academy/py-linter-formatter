@@ -20,12 +20,13 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
 
 def format_linter_report(linter_report: dict) -> list:
     return [{"errors": linter_report.get("./test_source_code_2.py"),
-             "path": [k for k in linter_report.keys()][0],
+             "path": [path_1 for path_1 in linter_report.keys()][0],
              "status": "passed"},
             {"errors": [{"line": error_dict["line_number"],
                          "column": error_dict["column_number"],
                          "message": error_dict["text"],
                          "name": error_dict["code"],
-                         "source": "flake8"} for error_dict in linter_report.get("./source_code_2.py")],
-             "path": "./source_code_2.py",
+                         "source": "flake8"} for error_dict in
+                        linter_report.get("./source_code_2.py")],
+             "path": [path_2 for path_2 in linter_report.keys()][1],
              "status": "failed"}]
