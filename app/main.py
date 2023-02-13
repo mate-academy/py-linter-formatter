@@ -1,27 +1,27 @@
 def format_linter_error(error: dict) -> dict:
     return {
-        "line": error["line_number"],
-        "column": error["column_number"],
-        "message": error["text"],
-        "name": error["code"],
+        "line": error.get("line_number"),
+        "column": error.get("column_number"),
+        "message": error.get("text"),
+        "name": error.get("code"),
         "source": "flake8"
     }
 
 
-def format_single_linter_file(file_path: str, errors: list) -> dict:
+def format_single_linter_file(file_path: str, errors: list[dict]) -> dict:
     return {
         "errors": [
             {
-                "line": error["line_number"],
-                "column": error["column_number"],
-                "message": error["text"],
-                "name": error["code"],
+                "line": error.get("line_number"),
+                "column": error.get("column_number"),
+                "message": error.get("text"),
+                "name": error.get("code"),
                 "source": "flake8"
             }
             for error in errors
         ],
         "path": file_path,
-        "status": "failed" if len(errors) else "passed"
+        "status": "failed" if errors else "passed"
     }
 
 
@@ -30,17 +30,17 @@ def format_linter_report(linter_report: dict) -> list:
         {
             "errors": [
                 {
-                    "line": error["line_number"],
-                    "column": error["column_number"],
-                    "message": error["text"],
-                    "name": error["code"],
+                    "line": error.get("line_number"),
+                    "column": error.get("column_number"),
+                    "message": error.get("text"),
+                    "name": error.get("code"),
                     "source": "flake8"
                 }
                 for error in linter_report[path]
-                if len(linter_report[path])
+                if linter_report.get(path)
             ],
             "path": path,
-            "status": "failed" if len(linter_report[path]) else "passed"
+            "status": "failed" if linter_report.get(path) else "passed"
         }
         for path in linter_report
     ]
