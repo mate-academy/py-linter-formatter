@@ -1,3 +1,6 @@
+from audioop import error
+
+
 def format_linter_error(error: dict) -> dict:
 
     return {
@@ -15,13 +18,8 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
         "errors":
             [
                 {
-                    "line": errors.get("line_number"),
-                    "column":errors.get("column_number"),
-                    "message": errors.get("text"),
-                    "name": errors.get("code"),
-                    "source": "flake8"
+                    format_linter_error(error)
                 }
-                for error in errors
             ],
         "path": "./source_code_2.py",
         "status": "failed"
@@ -39,17 +37,8 @@ def format_linter_report(linter_report: dict) -> list:
             "errors":
                 [
                     {
-                        "line": linter_report.get("line_number"),
-                        "column": linter_report.get("column_number"),
-                        "message": linter_report.get("text"),
-                        "name": linter_report.get("code"),
-                        "source": "flake8"
+                        format_single_linter_file(file_path, error)
                     }
-                    for error in errors
                 ]
-
-            "path": "./source_code_2.py",
-            "status": "failed"
         }
-
     ]
