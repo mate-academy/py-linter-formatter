@@ -1,5 +1,5 @@
 
-1.
+# 1
 def format_linter_error(error):
     return {
         "line": error.get("line_number"),
@@ -9,7 +9,7 @@ def format_linter_error(error):
         "source": "flake8"
     }
 
-2.
+# 2
 def format_single_linter_file(file_path, errors):
     formatted_errors = []
     for error in errors:
@@ -24,16 +24,7 @@ def format_single_linter_file(file_path, errors):
     }
 
 
-3
-def format_linter_error(error):
-    return {
-        "line": error.get("line_number"),
-        "column": error.get("column_number"),
-        "message": error.get("text"),
-        "name": error.get("code"),
-        "source": "flake8"
-    }
-
+# 3
 def format_linter_report(linter_report):
     output = []
     for file_path, errors in linter_report.items():
