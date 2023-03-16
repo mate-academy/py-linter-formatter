@@ -28,6 +28,6 @@ def format_linter_report(
     linter_report: dict[str, list[dict[str, str]]]
 ) -> list[dict[str, Any]]:
     return [
-        format_single_linter_file(path, error_list)
-        for path, error_list in linter_report.items()
+        format_single_linter_file(path, errors)
+        for path, errors in linter_report.items()
     ]
