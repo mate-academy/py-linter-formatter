@@ -85,14 +85,26 @@ def test_format_linter_error(error_linter, error_mate):
 )
 def test_format_functions_one_line(func):
     code = inspect.getsource(func)
+    docstring = ast.get_docstring(ast.parse(code).body[0])
     assert (
-        isinstance(ast.parse(code).body[0].body[0], ast.Return) is True
-    ), f"Function '{func.__name__}' should contain only return statement"
+        isinstance(docstring, str)
+        and isinstance(ast.parse(code).body[0].body[1], ast.Return) is True
+        or isinstance(ast.parse(code).body[0].body[0], ast.Return) is True
+    ), f"Function '{func.__name__}' should contain only return statement and optional docstring"
 
 
 @pytest.mark.parametrize(
     "file_path,errors,result",
     [
+        (
+            "./source_code_1.py",
+            [],
+            {
+                "errors": [],
+                "path": "./source_code_1.py",
+                "status": "passed",
+            }
+        ),
         (
             "./source_code_2.py",
             [
