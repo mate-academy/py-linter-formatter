@@ -14,8 +14,7 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
         "errors": [format_linter_error(error) for error in errors],
         "path": file_path,
         "status":
-            "failed" if [format_linter_error(error) for error in errors]
-            else "passed"
+            "failed" if errors else "passed"
     }
     # в "errors" записує, змінену попередньою функцією, інформацію з errors
     # в "path" передає шлях файлу з file_path
