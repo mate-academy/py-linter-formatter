@@ -1,6 +1,7 @@
 def format_linter_error(error: dict) -> dict:
     return {
-        n_key: error[old] if old in error else old for n_key, old in zip(
+        new_key: error[old_key] if old_key in error else old_key
+        for new_key, old_key in zip(
             ["line", "column", "message", "name", "source"],
             ["line_number", "column_number", "text", "code", "flake8"]
         )
