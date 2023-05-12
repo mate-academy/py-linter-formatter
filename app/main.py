@@ -26,4 +26,24 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
 
 
 def format_linter_report(linter_report: dict) -> list:
-    pass
+    return [
+        {
+            "errors":
+                [
+                    {
+                        "line": item["line_number"],
+                        "column": item["column_number"],
+                        "message": item["text"],
+                        "name": item["code"],
+                        "source": "flake8"}
+                    for item in linter_report[corr]
+                    if item["filename"] in corr and item["text"] and item["code"]],
+            "path": corr,
+            "status": "failed"
+            if any(item["text"] and item["code"]
+                   for item in linter_report[corr])
+            else "passed"
+
+        }
+        for corr in linter_report
+    ]
