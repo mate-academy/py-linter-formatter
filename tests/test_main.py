@@ -366,3 +366,7 @@ def test_format_linter_error():
 
 def test_format_single_linter_file():
     assert False
+
+
+def format_single_linter_file():
+    assert False
