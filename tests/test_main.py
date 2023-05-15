@@ -358,15 +358,3 @@ def test_double_quotes_instead_of_single():
     assert "'" not in lines, (
         'You have to use a double quotes "" instead' " of single ''"
     )
-
-
-def test_format_linter_error():
-    assert False
-
-
-def test_format_single_linter_file():
-    assert False
-
-
-def format_single_linter_file():
-    assert False
