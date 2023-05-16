@@ -18,12 +18,6 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
 
 def format_linter_report(linter_report: dict) -> list:
     return [
-        {
-            "errors": [format_linter_error(item) for item in linter_report[corr]
-                       if item["filename"] in corr and item["text"] and item["code"]],
-            "path": corr,
-            "status": "failed" if any(item["text"] and item["code"]
-                                      for item in linter_report[corr]) else "passed"
-        }
+        format_single_linter_file(corr, linter_report[corr])
         for corr in linter_report
     ]
