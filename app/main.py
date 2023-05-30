@@ -17,7 +17,7 @@ print(format_linter_error(
         "line_number": 18,
         "column_number": 80,
         "text": "line too long (99 > 79 characters)",
-        "physical_line": "'return f'I like to filter, rounding, doubling, '"
+        "physical_line": "return f'I like to filter, rounding, doubling, "
         "store and decorate numbers: {', '.join(items)}!\""
     }
 )
@@ -55,7 +55,7 @@ print(format_single_linter_file(file_path="./source_code_2.py", errors=[
         "line_number": 18,
         "column_number": 80,
         "text": "line too long (99 > 79 characters)",
-        "physical_line": 'return f"I like to filter, rounding, doubling,'
+        "physical_line": "return f'I like to filter, rounding, doubling,"
         "store and decorate numbers: {', '.join(items)}!\""
     },
     {
@@ -64,7 +64,7 @@ print(format_single_linter_file(file_path="./source_code_2.py", errors=[
         "line_number": 18,
         "column_number": 100,
         "text": "no newline at end of file",
-        "physical_line": 'return f"I like to filter, rounding, doubling,'
+        "physical_line": "return f'I like to filter, rounding, doubling,"
         "store and decorate numbers: {', '.join(items)}!\""
     },
 ]))
@@ -81,18 +81,28 @@ def format_linter_report(linter_report: dict) -> list:
             "errors":
             [
                 {
-                    "line": linter_report["./source_code_2.py"][0]["line_number"],
-                    "column": linter_report["./source_code_2.py"][0]["column_number"],
-                    "message": linter_report["./source_code_2.py"][0]["text"],
-                    "name": linter_report["./source_code_2.py"][0]["code"],
-                    "source": "flake8"
+                    "line":
+                    linter_report["./source_code_2.py"][0]["line_number"],
+                    "column":
+                    linter_report["./source_code_2.py"][0]["column_number"],
+                    "message":
+                    linter_report["./source_code_2.py"][0]["text"],
+                    "name":
+                    linter_report["./source_code_2.py"][0]["code"],
+                    "source":
+                    "flake8"
                 },
                 {
-                    "line": linter_report["./source_code_2.py"][1]["line_number"],
-                    "column": linter_report["./source_code_2.py"][1]["column_number"],
-                    "message": linter_report["./source_code_2.py"][1]["text"],
-                    "name": linter_report["./source_code_2.py"][1]["code"],
-                    "source": "flake8"
+                    "line":
+                    linter_report["./source_code_2.py"][1]["line_number"],
+                    "column":
+                    linter_report["./source_code_2.py"][1]["column_number"],
+                    "message":
+                    linter_report["./source_code_2.py"][1]["text"],
+                    "name":
+                    linter_report["./source_code_2.py"][1]["code"],
+                    "source":
+                    "flake8"
                 }
             ],
             "path": "./source_code_2.py",
@@ -111,7 +121,8 @@ print(format_linter_report(linter_report={
                 "line_number": 18,
                 "column_number": 80,
                 "text": "line too long (99 > 79 characters)",
-                "physical_line": 'return f"I like to filter, rounding, doubling,'
+                "physical_line":
+                    "return f'I like to filter, rounding, doubling,"
                 "store and decorate numbers: {', '.join(items)}!\""
             },
             {
@@ -120,7 +131,8 @@ print(format_linter_report(linter_report={
                 "line_number": 18,
                 "column_number": 100,
                 "text": "no newline at end of file",
-                "physical_line": 'return f"I like to filter, rounding, doubling,'
+                "physical_line":
+                    "return f'I like to filter, rounding, doubling,"
                 "store and decorate numbers: {', '.join(items)}!\""
             },
     ]
