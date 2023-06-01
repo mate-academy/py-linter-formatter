@@ -50,3 +50,4 @@ def format_linter_report(linter_report: dict) -> list:
         }
         for key, val in linter_report.items()
     ]
+
