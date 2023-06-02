@@ -35,19 +35,16 @@ def format_linter_report(linter_report: dict) -> list:
             "errors":
                 [
                     {
-                        "line": elem["line_number"],
-                        "column": elem["column_number"],
-                        "message": elem["text"],
-                        "name": elem["code"],
+                        "line": dc["line_number"],
+                        "column": dc["column_number"],
+                        "message": dc["text"],
+                        "name": dc["code"],
                         "source": "flake8"
                     }
-                    for elem in val
-                ]
-            if all(val) else [],
+                    for dc in val
+                ],
             "path": key,
-            "status":"failed" if any(val)
-            else "passed"
+            "status": "failed" if any(val) else "passed"
         }
         for key, val in linter_report.items()
     ]
-
