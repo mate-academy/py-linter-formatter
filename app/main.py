@@ -1,20 +1,18 @@
 def format_linter_error(error: dict) -> dict:
     return {
-        new_key: error[old_key] if new_key != "source" else "flake8"
-        for old_key, new_key in
-        zip(("line_number", "column_number", "text", "code", None),
-            ("line", "column", "message", "name", "source"))
+        "line": error.get("line_number"),
+        "column": error.get("column_number"),
+        "message": error.get("text"),
+        "name": error.get("code"),
+        "source": "flake8"
     }
 
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
     return {
-        key: "failed" if (key == "status" and errors) else value
-        for key, value in [
-            ("errors", [format_linter_error(error) for error in errors]),
-            ("path", file_path),
-            ("status", "passed")
-        ]
+        "errors": [format_linter_error(error) for error in errors],
+        "path": file_path,
+        "status": "failed" if errors else "passed"
     }
 
 
