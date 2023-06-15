@@ -1,14 +1,10 @@
 def format_linter_error(error: dict) -> dict:
     return {
-        error_detail_name: (
-            error["line_number"] if error_detail_name == "line" else
-            error["column_number"] if error_detail_name == "column" else
-            error["text"] if error_detail_name == "message" else
-            error["code"] if error_detail_name == "name" else "flake8"
-        )
-        for error_detail_name in [
-            "line", "column", "message", "name", "source"
-        ]
+        "line": error.get("line_number"),
+        "column": error.get("column_number"),
+        "message": error.get("text"),
+        "name": error.get("code"),
+        "source": "flake8"
     }
 
 
