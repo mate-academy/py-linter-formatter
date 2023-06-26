@@ -26,13 +26,7 @@ def format_linter_report(linter_report: dict) -> list:
         {
             "errors":
                 [
-                    {
-                        "line": error["line_number"],
-                        "column": error["column_number"],
-                        "message": error["text"],
-                        "name": error["code"],
-                        "source": "flake8"
-                    }
+                    format_linter_error(error)
                     for error in errors_list
                 ],
             "path": filename,
