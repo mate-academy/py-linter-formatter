@@ -1,4 +1,4 @@
-def format_linter_error(error: list) -> list:
+def format_linter_error(error: dict) -> list:
     return {"line": error["line_number"],
             "column": error["column_number"],
             "message": error["text"],
