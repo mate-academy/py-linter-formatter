@@ -14,7 +14,6 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
         "status": "failed" if errors else "passed",
         "path": file_path
     }
-# відрагувати кожну помилку використовуючи функцію format_linter_error
 
 
 def format_linter_report(linter_report: dict) -> list:
@@ -22,7 +21,3 @@ def format_linter_report(linter_report: dict) -> list:
         format_single_linter_file(path, errors)
         for path, errors in linter_report.items()
     ]
-
-# треба проітеруватися по format_linter_error.items
-# for path, errors in linter_report.items()
-# до errors треба функцію format_single_linter_file
