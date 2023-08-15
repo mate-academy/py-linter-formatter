@@ -13,7 +13,8 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
         "errors": [
             {
                 format_linter_error_key: format_linter_error_value
-                for format_linter_error_key, format_linter_error_value in format_linter_error(error).items()
+                for format_linter_error_key, format_linter_error_value
+                in format_linter_error(error).items()
             } for error in errors
         ],
         "path": file_path,
