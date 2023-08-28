@@ -18,9 +18,8 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
 
 
 def format_linter_report(linter_report: dict) -> list:
-    return [{
-        "errors": [format_linter_error(error)
-                   if error else "" for error in linter_value],
-        "path": linter_key,
-        "status": ("failed" if linter_value else "passed")}
-        for linter_key, linter_value in linter_report.items()]
+    return [format_single_linter_file(
+        file_path=linter_key,
+        errors=[error if error else ""
+                for error in linter_value])
+            for linter_key, linter_value in linter_report.items()]
