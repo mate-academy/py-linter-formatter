@@ -1,9 +1,7 @@
 def format_linter_error(error: dict) -> dict:
-    return {["name", "message", "column", "line", "source"]
-            [a]:
-                [[error. get(i) for i in
-                  ["code", "text", "column_number", "line_number"]]
-                 + ["flake8"]][0][a] for a in range(5)}
+    return {["name", "message", "column", "line", "source"][i]
+            : error[["code", "text", "column_number", "line_number"][i]]
+            for i in range(4)} | {"source": "flake8"}
 
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
