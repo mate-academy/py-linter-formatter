@@ -14,7 +14,7 @@ def format_single_linter_file(file_path: str, errors: list,) -> dict:
             format_linter_error(error) for error in errors
         ],
         "path": file_path,
-        "status": "passed" if len(errors) == 0 else "failed"
+        "status": "failed" if errors else "passed"
     }
 
 
