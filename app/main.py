@@ -1,12 +1,11 @@
-
 def format_linter_error(error: dict) -> dict:
-    return  {
-    "line": error["line_number"],
-    "column": error["column_number"],
-    "message": error["text"],
-    "name": error["code"],
-    "source": "flake8"
-}
+    return {
+        "line": error["line_number"],
+        "column": error["column_number"],
+        "message": error["text"],
+        "name": error["code"],
+        "source": "flake8"
+    }
 
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
@@ -16,9 +15,9 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
             }
 
 
-
 def format_linter_report(linter_report: dict) -> list:
     return [format_single_linter_file(key, error) for key, error in linter_report.items()]
+
 
 errors = {
     "./test_source_code_2.py": [],
@@ -30,7 +29,7 @@ errors = {
             "column_number": 80,
             "text": "line too long (99 > 79 characters)",
             "physical_line": '    return f"I like to filter, rounding, doubling, '
-            "store and decorate numbers: {', '.join(items)}!\"",
+                             "store and decorate numbers: {', '.join(items)}!\"",
         },
         {
             "code": "W292",
@@ -39,7 +38,7 @@ errors = {
             "column_number": 100,
             "text": "no newline at end of file",
             "physical_line": '    return f"I like to filter, rounding, doubling, '
-            "store and decorate numbers: {', '.join(items)}!\"",
+                             "store and decorate numbers: {', '.join(items)}!\"",
         },
     ],
     "./source_code_1.py": [
@@ -50,7 +49,7 @@ errors = {
             "column_number": 74,
             "text": "multiple statements on one line (semicolon)",
             "physical_line": '        new_items = [f"{key} -> {value}" for key, '
-            "value in items.items()]; return func(new_items)\n",
+                             "value in items.items()]; return func(new_items)\n",
         },
         {
             "code": "E501",
@@ -59,7 +58,7 @@ errors = {
             "column_number": 80,
             "text": "line too long (97 > 79 characters)",
             "physical_line": '        new_items = [f"{key} -> {value}" for key, '
-            "value in items.items()]; return func(new_items)\n",
+                             "value in items.items()]; return func(new_items)\n",
         },
         {
             "code": "E302",
@@ -84,7 +83,7 @@ errors = {
             "column_number": 80,
             "text": "line too long (99 > 79 characters)",
             "physical_line": '    return f"I like to filter, rounding, doubling, '
-            "store and decorate numbers: {', '.join(items)}!\"\n",
+                             "store and decorate numbers: {', '.join(items)}!\"\n",
         },
     ],
     "./test_source_code_1.py": [
@@ -114,6 +113,3 @@ errors = {
         },
     ],
 }
-
-for key in format_linter_report(errors):
-    print(key)
