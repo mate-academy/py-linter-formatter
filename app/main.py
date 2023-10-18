@@ -1,8 +1,10 @@
 def format_linter_error(error: dict) -> dict:
     return {
-        ["name", "source", "line", "column", "message"][i]:
-        ("flake8" if key == "filename" else error[key])
-        for i, key in enumerate(error) if key != "physical_line"
+        "name": error["code"],
+        "source": "flake8",
+        "line": error["line_number"],
+        "column": error["column_number"],
+        "message": error["text"]
     }
 
 
