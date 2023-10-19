@@ -1,6 +1,6 @@
 def format_linter_error(error: dict) -> dict:
     # write your code here
-    pass
+    # pass
     return {
         "line": error["line_number"],
         "column": error["column_number"],
