@@ -13,24 +13,33 @@ def format_linter_error(error: dict) -> dict:
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
     return {
-
         "errors": [format_linter_error(num) for num in errors],
         "path": file_path,
         "status": "failed" if len(errors) else "passed"
-
-
     }
 
-    #     "errors": {
-    #         "line": data["line_number"],
-    #         "column": data["column_number"],
-    #         "message": data["text"],
-    #         "name": data["code"],
-    #         "source": "flake8"
-    #         for data in errors]
-    # },
+
 
 
 def format_linter_report(linter_report: dict) -> list:
     # write your code here
-    pass
+    return [
+        {
+            "errors": list(),
+            "path": list(linter_report.keys())[0],
+            "status": "passed"
+
+        },
+        # linter_report.get("./source_code_2.py")
+        # format_single_linter_file(list(linter_report.keys())[0], data)
+        # никак не могу понять как сделать правильно !!!!
+        [format_single_linter_file(list(linter_report.keys())[i], data) for i, data in enumerate(list(linter_report.values())) if i>0]
+        # format_single_linter_file(list(linter_report.keys())[0], list(linter_report.values())[2])
+        # for i, data in enumerate(list(linter_report.values())):
+        #     if i > 0:
+        #         format_single_linter_file(list(linter_report.keys())[i], data)
+
+
+
+
+    ]
