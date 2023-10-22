@@ -32,7 +32,7 @@ def format_linter_report(linter_report: dict) -> list:
         },
         # linter_report.get("./source_code_2.py")
         # format_single_linter_file(list(linter_report.keys())[0], data)
-        # никак не могу понять как сделать правильно !!!!
+        # никак не могу понять как сделать правильно !!!!!
         [format_single_linter_file(list(linter_report.keys())[i], data) for i, data in enumerate(list(linter_report.values())) if i>0]
         # format_single_linter_file(list(linter_report.keys())[0], list(linter_report.values())[2])
         # for i, data in enumerate(list(linter_report.values())):
