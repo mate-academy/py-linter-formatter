@@ -1,5 +1,5 @@
 def format_linter_error(error: dict) -> dict:
-    # write your code here
+
     pass
 
 
