@@ -339,32 +339,3 @@ errors = [
 ```
 
 ### Note: Check your code using this [checklist](checklist.md) before pushing your solution.
-def format_linter_error(error):
-    formatted_error = {
-        "line": error["line_number"],
-        "column": error["column_number"],
-        "message": error["text"],
-        "name": error["code"],
-        "source": "flake8"
-    }
-    return formatted_error
-
-def format_single_linter_file(file_path, errors):
-    if errors:
-        status = "failed"
-    else:
-        status = "passed"
-    
-    formatted_file = {
-        "errors": [format_linter_error(error) for error in errors],
-        "path": file_path,
-        "status": status
-    }
-    return formatted_file
-
-def format_linter_report(linter_report):
-    formatted_report = []
-    for file_path, errors in linter_report.items():
-        formatted_file = format_single_linter_file(file_path, errors)
-        formatted_report.append(formatted_file)
-    return formatted_report
