@@ -3,7 +3,7 @@ def format_linter_error(error: dict) -> dict:
              else "line" if key == "line_number"
              else "column" if key == "column_number"
              else "message" if key == "text"
-             else "source"): ("flake8" if str(value).startswith("./s") else value)
+             else "source"): ("flake8" if str(value).startswith("./") else value)
             for key, value in (dict(list(error.items())[2:5] + list(error.items())[:2])).items()
             }
 
