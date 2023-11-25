@@ -3,7 +3,7 @@
 Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before starting.
 
 The `flake8` linter gives the following error report when checking a directory with source code files:
-
+ 
 ```python
 errors = {
     "./test_source_code_2.py": [],
