@@ -8,7 +8,8 @@ def format_linter_error(error: dict) -> dict:
 def format_single_linter_file(file_path: str, errors: list) -> dict:
     return {
         "errors": [format_linter_error(index) for index in errors],
-        "path": file_path, "status": "failed"
+        "path": file_path, "status": "".join(
+            ["passed" if errors == [] else "failed"])
     }
 
 
