@@ -1,15 +1,5 @@
-def format_single_linter_file(file_path: str, errors: list) -> dict:
-    # write your code here
-    pass
-
-
-def format_linter_report(linter_report: dict) -> list:
-    # write your code here
-    pass
-
-
 def format_linter_error(error: dict) -> dict:
-    # write your code here
+    # """ formats a single error dictionary """
     return {
         "line": error["line_number"],
         "column": error["column_number"],
@@ -17,3 +7,24 @@ def format_linter_error(error: dict) -> dict:
         "name": error["code"],
         "source": "flake8",
     }
+
+
+def format_single_linter_file(file_path: str, errors: list) -> dict:
+    # """ formats all errors for a particular file
+    # and adds the path key — path to the file,
+    # and the status key — "failed" if there are errors,
+    # "passed" if there are no errors:
+    # """
+    return {
+        "errors": [format_linter_error(error) for error in errors],
+        "path": file_path,
+        "status": "failed" if errors else "passed",
+    }
+
+
+def format_linter_report(linter_report: dict) -> list:
+    # """ formats all errors for all report files: """
+    return [
+        format_single_linter_file(file_path, errors)
+        for file_path, errors in linter_report.items()
+    ]
