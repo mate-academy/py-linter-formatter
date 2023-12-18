@@ -17,7 +17,10 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
                 "message": error["text"],
                 "name": error["code"],
                 "source": "flake8"
+<<<<<<< HEAD
 
+=======
+>>>>>>> 08e24eaa84f6a71d95fa6a8ef54d4bb9bbed9088
             }
             for error in errors
         ],
@@ -44,8 +47,11 @@ def format_linter_report(linter_report: dict) -> list:
         }
         for path, errors in linter_report.items()
     ]
+<<<<<<< HEAD
 
 
 
 
 
+=======
+>>>>>>> 08e24eaa84f6a71d95fa6a8ef54d4bb9bbed9088
