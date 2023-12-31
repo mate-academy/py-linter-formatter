@@ -1,21 +1,11 @@
 def format_linter_error(error: dict) -> dict:
-    d = {
-        "line" : 0,
-        "column" : 0,
-        "message" : 0,
-        "name" : 0,
+    return {
+        "line": error["line_number"] if "line_number" in error else None,
+        "column": error["column_number"] if "column_number" in error else None,
+        "message": error["text"] if "text" in error else None,
+        "name": error["code"] if "code" in error else None,
         "source": "flake8"
-         }
-    for i, j in error.items():
-        if i == "code":
-            d["name"] = j
-        elif i == "line_number":
-            d["line"] = j
-        elif i == "column_number":
-            d["column"] = j
-        elif i == "text":
-            d["message"] = j
-    print(d)
+    }
 
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
@@ -36,4 +26,4 @@ error = {
     "physical_line": '    return f"I like to filter, rounding, doubling, '
     "store and decorate numbers: {', '.join(items)}!\"",
 }
-format_linter_error(error)
+print(format_linter_error(error))
