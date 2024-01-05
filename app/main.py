@@ -1,4 +1,5 @@
 def format_linter_error(error: dict) -> dict:
+
     return {
         "line": error["line_number"],
         "column": error["column_number"],
@@ -9,6 +10,7 @@ def format_linter_error(error: dict) -> dict:
 
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
+
     return {
         "errors": [format_linter_error(item) for item in errors],
         "path": file_path,
@@ -16,6 +18,7 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
 
 
 def format_linter_report(linter_report: dict) -> list:
+
     return [
         format_single_linter_file(key, value)
         for key, value in linter_report.items()
