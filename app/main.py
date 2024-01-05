@@ -1,49 +1,15 @@
 def format_linter_error(error: dict) -> dict:
-    return {
-        "line": error["line_number"],
-        "column": error["column_number"],
-        "message": error["text"],
-        "name": error["code"],
-        "source": "flake8"
-    }
+    return {"line": error["line_number"], "column": error["column_number"],
+            "message": error["text"], "name": error["code"],
+            "source": "flake8"}
 
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
-    return {
-        "path": file_path,
-        "status": "failed" if errors else "passed",
-        "errors": [
-            {
-                "line": error["line_number"],
-                "column": error["column_number"],
-                "message": error["text"],
-                "name": error["code"],
-                "source": "flake8"
-            }
-            for error in errors
-        ]
-    } if errors else {
-        "path": file_path,
-        "status": "passed",
-        "errors": []
-    }
+    return {"errors": [format_linter_error(error) for error in errors],
+            "path": file_path,
+            "status": "failed" if errors else "passed"}
 
 
 def format_linter_report(linter_report: dict) -> list:
-    return [
-        {
-            "path": path,
-            "status": "passed" if not errors else "failed",
-            "errors": [
-                {
-                    "line": error["line_number"],
-                    "column": error["column_number"],
-                    "message": error["text"],
-                    "name": error["code"],
-                    "source": "flake8"
-                }
-                for error in errors
-            ]
-        }
-        for path, errors in linter_report.items()
-    ]
+    return [format_single_linter_file(file_path=path, errors=errors)
+            for path, errors in linter_report.items()]
