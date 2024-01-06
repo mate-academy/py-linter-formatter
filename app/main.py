@@ -1,5 +1,6 @@
 from typing import Any
 
+
 def format_linter_error(error: dict) -> dict[str, str | Any]:
     return {
         "line": error["line_number"],
