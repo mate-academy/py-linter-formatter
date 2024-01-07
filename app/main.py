@@ -21,4 +21,3 @@ def format_linter_report(linter_report: dict) -> list:
         format_single_linter_file(file_path, errors)
         for file_path, errors in linter_report.items()
     ]
-    # Це норм, якщо мені 31 і я просто хочу піти поплакати в туалеті?  =)))
