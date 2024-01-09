@@ -26,3 +26,4 @@ def format_linter_report(linter_report: dict) -> list:
         } 
         for path, error in linter_report.items()
     ]
+
