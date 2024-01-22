@@ -7,11 +7,17 @@ def format_linter_error(error: dict) -> dict:
         "source": "flake8"
     }
 
+
 def format_single_linter_file(file_path: str, errors: list) -> dict:
-    return {"errors": [format_linter_error(error) for error in errors],
-            "path": file_path,
-            "status": "passed" if errors == [] else "failed"}
+    return {
+        "errors": [format_linter_error(error) for error in errors],
+        "path": file_path,
+        "status": "passed" if errors == [] else "failed"
+    }
 
 
 def format_linter_report(linter_report: dict) -> list:
-    return [format_single_linter_file(key, value) for key, value in linter_report.items()]
+    return [
+        format_single_linter_file(key, value)
+        for key, value in linter_report.items()
+    ]
