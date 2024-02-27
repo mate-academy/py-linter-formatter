@@ -28,5 +28,5 @@ def format_linter_report(linter_report: dict) -> list:
                       if len(linter_report[error_report]) > 0
                       else 'passed'
         }
-        for i, error_report in enumerate(linter_report)
+        for error_report in linter_report
     ]
