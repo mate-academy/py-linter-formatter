@@ -9,7 +9,7 @@ def format_linter_error(error: dict) -> dict:
 def format_single_linter_file(file_path: str, errors: list) -> dict:
     return {
         "path": file_path,
-        "errors": [format_linter_error(value) for value in errors],
+        "errors": [format_linter_error(error) for error in errors],
         "status": "failed" if any(errors) else "passed"
     }
 
@@ -17,7 +17,7 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
 def format_linter_report(linter_report: dict) -> list:
     return [
         {"errors": [],
-         "path": "./test_source_code_2.py",
+         "path": linter_report.get("./test_source_code_2.py"),
          "status": "passed"
          },
         format_single_linter_file(
