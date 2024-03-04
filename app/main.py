@@ -15,13 +15,6 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
 
 
 def format_linter_report(linter_report: dict) -> list:
-    return [
-        {"errors": [],
-         "path": linter_report.get("./test_source_code_2.py"),
-         "status": "passed"
-         },
-        format_single_linter_file(
-            "./source_code_2.py",
-            linter_report.get("./source_code_2.py")
-        )
-    ]
+    return [format_single_linter_file(path, errors)
+            for (path, errors) in linter_report.items()
+            ]
