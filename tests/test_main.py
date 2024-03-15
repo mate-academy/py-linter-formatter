@@ -1,8 +1,8 @@
 import pytest
-import re
 import ast
 import inspect
 
+from app import main
 from app.main import (
     format_linter_error,
     format_single_linter_file,
@@ -346,22 +346,15 @@ def test_format_linter_report(errors_linter, errors_mate):
     )
 
 
-def test_removed_comment():
-    import app
-    with open(app.main.__file__, "r") as f:
-        file_content = f.read()
-        comment = re.compile("# write your code here")
-        assert not comment.search(
-            file_content
-        ), "You have to remove the unnecessary comment '# write your code here'"
+def test_comment_deleted():
+    lines = inspect.getsource(main)
+    assert "# write your code here" not in lines, (
+        "Remove the unnecessary" " comment '# write your code here'"
+    )
 
 
 def test_double_quotes_instead_of_single():
-    import app
-    with open(app.main.__file__, "r") as f:
-        file_content = f.read()
-        comment = re.compile("\'")
-        assert not comment.search(
-            file_content
-        ), "You have to use a double quotes \"\" instead of single \'\'"
-
+    lines = inspect.getsource(main)
+    assert "'" not in lines, (
+        'You have to use a double quotes "" instead' " of single ''"
+    )
