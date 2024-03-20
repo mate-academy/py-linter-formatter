@@ -19,14 +19,15 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
 def format_linter_report(linter_report: dict) -> list:
     return [
         {
-            "errors": [format_linter_error(erroy)
-                       for erroy
-                       in linter_report[error_report]
-                       ],
+            "errors": [
+                format_linter_error(error)
+                for error
+                in linter_report[error_report]
+            ],
             "path": error_report,
             "status": "failed"
                       if len(linter_report[error_report]) > 0
                       else "passed"
         }
-        for i, error_report in enumerate(linter_report)
+        for error_report in linter_report
     ]
