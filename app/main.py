@@ -1,27 +1,20 @@
 def format_linter_error(error: dict) -> dict:
-    name = error.get("code", "")
-    formatted_error = {
+    return {
         "line": error.get("line_number"),
         "column": error.get("column_number"),
         "message": error.get("text"),
-        "name": name,
+        "name": error.get("code", ""),
         "source": "flake8"
     }
-    return formatted_error
 
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
-    formatted_errors = [format_linter_error(error) for error in errors]
-    status = "failed" if formatted_errors else "passed"
-
-    formatted_error = {
-        "errors": formatted_errors,
+    return {
+        "errors": [format_linter_error(error) for error in errors],
         "path": file_path,
-        "status": status
+        "status": "failed" if any(format_linter_error(error) for error in errors) else "passed"
     }
-    return formatted_error
 
 
 def format_linter_report(linter_report: dict) -> list:
-    # write your code here
-    pass
+    return [format_single_linter_file(file_path, errors) for file_path, errors in linter_report.items()]
