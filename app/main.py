@@ -5,7 +5,6 @@ def format_linter_error(error: dict) -> dict:
         "message": error["text"],
         "name": error["code"],
         "source": "flake8"
-
     }
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
@@ -15,6 +14,5 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
         "status": "passed" if len(errors) == 0 else "failed"
     }
 
-# print(format_single_linter_file(file_path="./source_code_2.py",errors=errors))
 def format_linter_report(linter_report: dict) -> list:
     return [format_single_linter_file(file_path=key, errors=value) for key, value in linter_report.items()]
