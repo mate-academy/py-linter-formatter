@@ -10,7 +10,8 @@ def format_linter_error(error: dict) -> dict:
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
     return {
-        "errors": [{"line": e["line_number"], "column": e["column_number"], "message": e["text"], "name": e["code"],
+        "errors": [{"line": e["line_number"], "column": e["column_number"], "message": e["text"],
+                    "name": e["code"],
                     "source": "flake8"} for e in errors],
         "path": file_path,
         "status": "failed" if errors else "passed"
@@ -29,3 +30,6 @@ def format_linter_report(linter_report: dict) -> list:
         }
         for path, errors in linter_report.items()
     ]
+
+def even_odd(numbers: list) -> list:
+    return ["even" if i % 2 == 0 else "odd" for i in numbers]
