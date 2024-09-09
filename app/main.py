@@ -1,13 +1,10 @@
 def format_linter_error(error: dict) -> dict:
     return {
-        (
-            "name" if key == "code" else "source" if key == "filename" else
-            "message" if key == "text" else
-            tuple(key.split("_"))[0]
-        ):
-        ("flake8" if key == "filename" else value)
-        for key, value in error.items() if
-        value is not None and key != "physical_line"
+        "line": error["line_number"],
+        "column": error["column_number"],
+        "message": error["text"],
+        "name": error["code"],
+        "source": "flake8"
     }
 
 
