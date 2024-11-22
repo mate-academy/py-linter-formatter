@@ -3,7 +3,7 @@ def format_linter_error(error: dict) -> dict:
     return [error:"code", "E501"]
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
-    return [errors:"code": "E501"]
+    return [error:"code": "E501"]
 
 
 
