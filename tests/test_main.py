@@ -1,12 +1,4 @@
-import pytest
-import ast
-import inspect
 
-from app import main
-from app.main import (
-    format_linter_error,
-    format_single_linter_file,
-    format_linter_report,
 )
 
 
