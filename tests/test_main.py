@@ -345,7 +345,6 @@ def test_format_linter_report(errors_linter, errors_mate):
         f"when 'errors' equals to {errors_linter}"
     )
 
-
 def test_comment_deleted():
     lines = inspect.getsource(main)
     assert "# write your code here" not in lines, (
