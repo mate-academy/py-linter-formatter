@@ -1,6 +1,5 @@
 def format_linter_error(error: dict) -> dict:
-    # write your code here
-    pass
+
 
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
