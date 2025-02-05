@@ -11,10 +11,9 @@ def format_linter_error(error: dict) -> set[dict[str, str | Any]]:
     }
 
 
-def format_single_linter_file(file_path: str, errors: list) -> set[dict[str, list[dict[str, str | Any]] | str]]:
+def format_single_linter_file(file_path: str, errors: list) -> set:
     return {
-        dict(errors=
-        [
+        dict(errors=[
             dict(line=error["line_number"],
                  column=error["column_number"],
                  message=error["text"],
@@ -34,8 +33,7 @@ def format_linter_report(linter_report: dict) -> list:
             path="./test_source_code_2.py",
             status="passed"
         ),
-        dict(errors=
-        [
+        dict(errors=[
             dict(line=error["line_number"],
                  column=error["column_number"],
                  message=error["text"],
