@@ -129,10 +129,17 @@ print(format_linter_error(error=error))
     "source": "flake8"
 }
 ```
+def format_linter_error(error):
+    return {
+        "line": error["line_number"].
+        "column": error["column_number"]
+        "message": error["text"]
+        "name": error["code"]
+        "source": "flake8"
+    }
 
 2. `format_single_linter_file` - formats all errors for a particular file and adds the `path` key — path to the file,
 and the `status` key — "failed" if there are errors, "passed" if there are no errors:
-
 ```python
 errors = [
     {
@@ -179,6 +186,14 @@ print(format_single_linter_file(file_path="./source_code_2.py", errors=errors))
     "status": "failed"
 }
 ```
+def format_single_linter_file(file_path, errors):
+    formatted_errors = [format_linter_error(error) for error in errors]
+    return {
+        "errors": formatted_errors,
+        "path": file_path,
+        "status": "failed" if formatted_errors else "passed"
+    }
+
 
 3. `format_linter_report` - formats all errors for all report files:
 
@@ -337,5 +352,12 @@ errors = [
     },
 ]
 ```
-
+def format_linter_report(linter_report):
+    return [
+        {"errors": [format_linter_error(error) for error in errors],
+        "path": file_path,
+        "status": "failed" if errors else "passed"
+        }
+        for file_path, errors in linter_report.items()
+    ]
 ### Note: Check your code using this [checklist](checklist.md) before pushing your solution.
