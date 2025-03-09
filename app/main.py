@@ -19,7 +19,7 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
         "errors": [{value: (i[key] if key in i else key)
                    for key, value in update_error_local.items()}
                    for i in errors],
-        "path": "./source_code_2.py",
+        "path": file_path,
         "status": "failed"
     }
 
@@ -27,13 +27,13 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
 def format_linter_report(linter_report: dict) -> list:
     return [
         {"errors": linter_report[i]
-         if linter_report[i] == []
-         else [{value: (i[key] if key in i else key)
+        if linter_report[i] == []
+        else [{value: (error[key] if key in error else key)
                for key, value in update_error_local.items()}
-               for i in linter_report[i]]
+              for error in linter_report[i]]
             , "path": i, "status": "passed"
-         if linter_report[i] == []
-         else "failed"
+        if linter_report[i] == []
+        else "failed"
          }
         for i in linter_report]
 
