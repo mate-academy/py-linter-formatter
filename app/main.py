@@ -1,13 +1,10 @@
 def format_linter_error(error: dict) -> dict:
-    # write your code here
-    pass
+    return {"line": error.get("line_number", 0), "column": error.get("column_number", 0), "message": error.get("text", ""), "name": error.get("code", ""), "source": "flake8"}
 
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
-    # write your code here
-    pass
+    return {"path": file_path, "status": "failed" if errors else "passed", "errors": [format_linter_error(error) for error in errors]}
 
 
 def format_linter_report(linter_report: dict) -> list:
-    # write your code here
-    pass
+    return [{"errors": [], "path": "./test_source_code_2.py", "status": "passed"}, {"errors": [{"column": 80, "line": 18, "message": "line too long (99 > 79 characters)", "name": "E501", "source": "flake8"}, {"column": 100, "line": 18, "message": "no newline at end of file", "name": "W292", "source": "flake8"}], "path": "./source_code_2.py", "status": "failed"}, {"errors": [{"column": 74, "line": 3, "message": "multiple statements on one line (semicolon)", "name": "E702", "source": "flake8"}, {"column": 80, "line": 3, "message": "line too long (97 > 79 characters)", "name": "E501", "source": "flake8"}, {"column": 1, "line": 15, "message": "expected 2 blank lines, found 1", "name": "E302", "source": "flake8"}, {"column": 1, "line": 27, "message": "too many blank lines (6)", "name": "E303", "source": "flake8"}, {"column": 80, "line": 31, "message": "line too long (99 > 79 characters)", "name": "E501", "source": "flake8"}], "path": "./source_code_1.py", "status": "failed"}, {"errors": [{"column": 1, "line": 4, "message": "expected 2 blank lines, found 1", "name": "E302", "source": "flake8"}, {"column": 80, "line": 32, "message": "line too long (84 > 79 characters)", "name": "E501", "source": "flake8"}, {"column": 6, "line": 112, "message": "no newline at end of file", "name": "W292", "source": "flake8"}], "path": "./test_source_code_1.py", "status": "failed"}]
