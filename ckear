@@ -1,0 +1,11 @@
+[1mdiff --git a/app/main.py b/app/main.py[m
+[1mindex 1fe7695..5249744 100644[m
+[1m--- a/app/main.py[m
+[1m+++ b/app/main.py[m
+[36m@@ -12,4 +12,4 @@[m [mdef format_single_linter_file(file_path: str, errors: list) -> dict:[m
+ [m
+ [m
+ def format_linter_report(linter_report: dict) -> list:[m
+[31m-    return [format_single_linter_file(file, errors) for file, errors in linter_report.items()][m
+[32m+[m[32m    return [format_single_linter_file(file, errors) for file, errors in linter_report.items()]фывфывфывфы[m
+\ No newline at end of file[m
