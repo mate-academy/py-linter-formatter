@@ -1,6 +1,3 @@
-import pprint
-
-
 def format_linter_error(error: dict) -> dict:
 
     return {
@@ -93,4 +90,4 @@ report_file = {
     ]
 }
 
-pprint.pprint(format_linter_report(linter_report=report_file))
+print(format_linter_report(linter_report=report_file))
