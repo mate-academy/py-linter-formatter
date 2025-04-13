@@ -7,6 +7,10 @@ from app.main import (
     format_linter_error,
     format_single_linter_file,
     format_linter_report,
+    process_data,  # Import the function
+    greet,
+    log_message,
+    file_process,
 )
 
 
@@ -358,3 +362,51 @@ def test_double_quotes_instead_of_single():
     assert "'" not in lines, (
         'You have to use a double quotes "" instead' " of single ''"
     )
+
+
+@pytest.mark.parametrize(
+    "data, expected_output",
+    [
+        ([1, 2, 3], "Processed data: Total=6, Average=2.0"),
+        ([1.5, 2.5, 3.5], "Processed data: Total=7.5, Average=2.5"),
+        ([-1, 0, 1], "Processed data: Total=0, Average=0.0"),
+    ],
+)
+def test_process_data(data, expected_output):
+    assert process_data(data) == expected_output
+
+
+@pytest.mark.parametrize(
+    "name, expected_greeting",
+    [
+        ("World", "Hello, World"),
+        ("Aiden", "Hello, Aiden"),
+        ("", "Hello, "),  # Test with an empty name
+    ],
+)
+def test_greet(name, expected_greeting):
+    assert greet(name) == expected_greeting
+
+
+def test_log_message(capsys):
+    log_message("Test message")
+    captured = capsys.readouterr()
+    assert captured.out == "Logging: Test message\n"
+
+
+def test_file_process(capsys):
+    file_process("test_path")
+    captured = capsys.readouterr()
+    assert captured.out == "Processing path\n"
+
+
+def test_process_data_empty_list():
+    with pytest.raises(ValueError) as excinfo:
+        process_data([])
+    assert str(excinfo.value) == "Data list cannot be empty"
+
+
+def test_process_data_non_numeric_data():
+    with pytest.raises(ValueError) as excinfo:
+        process_data([1, 2, "a"])
+    assert str(excinfo.value) == "Data must contain only numbers"
