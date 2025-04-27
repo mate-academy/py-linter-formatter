@@ -1,13 +1,22 @@
-def format_linter_error(error: dict) -> dict:
+def format_linter_error(error):
+    return {'line': error['line'], 'column': error['column'], 'message': error['message']}
 
-    pass
-
+print(format_linter_error({'line': 42, 'column': 3, 'message': 'Syntax Error'}))
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
-
-    pass
-
-
-def format_linter_report(linter_report: dict) -> list:
-
-    pass
+    return {
+        "path": file_path,
+        "errors": [
+            {
+                "line": err["line_number"],
+                "column": err["column_number"],
+                "message": err["text"],
+                "name": err["code"],
+                "source": "flake8",
+            }
+            for err in errors
+        ],
+        "status": "failed" if errors else "passed"
+    }
+import importlib
+print(importlib.import_module("pytest"))  # Альтернативний варіант
