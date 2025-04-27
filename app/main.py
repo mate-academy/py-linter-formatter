@@ -1,7 +1,18 @@
-def format_linter_error(error):
-    return {'line': error['line'], 'column': error['column'], 'message': error['message']}
+import importlib
 
-print(format_linter_error({'line': 42, 'column': 3, 'message': 'Syntax Error'}))
+print(importlib.import_module("pytest"))  # Альтернативний варіант
+
+
+def format_linter_error(error):
+    return {
+        "line": error["line"],
+        "column": error["column"],
+        "message": error["message"],
+    }
+
+
+print(format_linter_error({"line": 42, "column": 3, "message": "Syntax Error"}))
+
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
     return {
@@ -16,7 +27,12 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
             }
             for err in errors
         ],
-        "status": "failed" if errors else "passed"
+        "status": "failed" if errors else "passed",
     }
-import importlib
-print(importlib.import_module("pytest"))  # Альтернативний варіант
+
+
+long_string = (
+    "Цей рядок надто довгий і потрібно його розбити "
+    "на два коротші, щоб відповідати стандарту PEP 8."
+)
+
