@@ -246,7 +246,7 @@ def test_format_single_linter_file(file_path, errors, result):
                 ],
             },
             [
-                {"errors": [], "path": "./test_source_code_2.py", "status": "failed"},
+                {"errors": [], "path": "./test_source_code_2.py", "status": "passed"},
                 {
                     "errors": [
                         {
