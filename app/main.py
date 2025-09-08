@@ -33,7 +33,7 @@ def format_linter_report(linter_report: dict) -> list:
             "source": "flake8",
         }
             for error in errors],
-            "path": key,
+            "path": file_path,
             "status": "passed" if len(errors) == 0 else "failed"}
-        for key, errors in linter_report.items()
+        for file_path, errors in linter_report.items()
     ]
