@@ -1,3 +1,4 @@
+
 def format_linter_error(error):
     return {
         "line": error["line_number"],
@@ -22,5 +23,5 @@ def format_single_linter_file(file_path, errors):
 def format_linter_report(linter_report):
     return [
         format_single_linter_file(path, errors)
-        for path, errors in linter_report.items()  # без сортування — зберігаємо вхідний порядок
+        for path, errors in linter_report.items()
     ]
