@@ -1,4 +1,3 @@
-
 def format_linter_error(error):
     return {
         "line": error["line_number"],
