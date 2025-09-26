@@ -21,6 +21,6 @@ def format_single_linter_file(file_path, errors):
 
 def format_linter_report(linter_report):
     return [
-        format_single_linter_file(path, linter_report[path])
-        for path in sorted(linter_report)
+        format_single_linter_file(path, errors)
+        for path, errors in linter_report.items()  # без сортування — зберігаємо вхідний порядок
     ]
