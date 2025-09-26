@@ -1,4 +1,4 @@
-def format_linter_error(error: dict) -> dict:
+def format_linter_error(error):
     return {
         "line": error["line_number"],
         "column": error["column_number"],
@@ -8,19 +8,19 @@ def format_linter_error(error: dict) -> dict:
     }
 
 
-def format_single_linter_file(file_path: str, errors: list) -> dict:
+def format_single_linter_file(file_path, errors):
     return {
+        "errors": [
+            format_linter_error(error)
+            for error in sorted(errors, key=lambda error: (error["line_number"], error["column_number"]))
+        ],
         "path": file_path,
         "status": "failed" if errors else "passed",
-        "errors": [
-            format_linter_error(e)
-            for e in sorted(errors, key=lambda er: (er["line_number"], er["column_number"]))
-        ],
     }
 
 
-def format_linter_report(linter_report: dict) -> list:
+def format_linter_report(linter_report):
     return [
-        format_single_linter_file(path, errs)
-        for path, errs in sorted(linter_report.items(), key=lambda it: it[0])
+        format_single_linter_file(path, linter_report[path])
+        for path in sorted(linter_report)
     ]
