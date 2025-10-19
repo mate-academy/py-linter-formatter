@@ -7,7 +7,6 @@ def format_linter_error(error: dict) -> dict:
         "source": "flake8"
     }
 
-    return res
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
     return {
@@ -15,6 +14,7 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
         "path": file_path,
         "status": "passed" if len(errors) == 0 else "failed"
     }
+
 
 def format_linter_report(linter_report: dict) -> list:
     return [
