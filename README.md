@@ -110,7 +110,7 @@ Write 3 functions to convert the report into the format we need:
 
 ```python
 error = {
-    "code": "E501",
+    "code": "E501", 
     "filename": "./source_code_2.py",
     "line_number": 18,
     "column_number": 80,
