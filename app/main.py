@@ -1,25 +1,22 @@
 def format_linter_error(error: dict) -> dict:
     return {
-        key: value
-        for key, value in error.items()
-        if key in ('message', 'line', 'column')
+        "message": error.get("text", ""),
+        "line": error.get("line_number", 0),
+        "column": error.get("column_number", 0)
     }
     pass
 
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
     return {
-        key: errors[key]
-        for key in ('message', 'line', 'column')
-        if key in errors
+        file_path: [format_error_item(error) for error in errors]
     }
     pass
 
 
 def format_linter_report(linter_report: dict) -> list:
-    return {
-        key: error[key]
-        for key in ('message', 'line', 'column')
-        if key in error
-    }
-    pass
+    return [
+        _format_error_item(error)
+        for file_path, errors in linter_report.items()  # 1. Перебираємо пари (файл, список помилок)
+        for error in errors  # 2. Перебираємо кожну помилку у списку
+    ]
