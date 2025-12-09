@@ -1,8 +1,11 @@
 .idea/
-.vscode/
 *.iml
 .env
 .DS_Store
 venv/
 .pytest_cache/
 **__pycache__/
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
