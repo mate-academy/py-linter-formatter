@@ -1,16 +1,17 @@
 def format_linter_error(error: dict) -> dict:
     return {
-        "line": 18,
-        "column": 80,
-        "message": "line too long (99 > 79 charactres)",
-        "name": "E501",
-        "souce": "flake8"
+        "line": error["line_number"],
+        "column": error["column_number"],
+        "message": error["text"],
+        "name": error["code"],
+        "source": "flake8"
     }
 
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
-    # write your code here
-    pass
+    return {
+
+    }
 
 
 def format_linter_report(linter_report: dict) -> list:
