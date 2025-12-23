@@ -1,11 +1,9 @@
 def format_linter_error(error: dict) -> dict:
-    return {("line" if ky == "line_number" else "column"
-            if ky == "column_number" else "message"
-            if ky == "text" else "name"
-            if ky == "code" else "source"):
-                (vl if ky in ["line_number", "column_number",
-                              "text", "code"] else "flake8")
-            for ky, vl in error.items()}
+    return {("line" if key == "line_number" else "column"
+            if key == "column_number" else "message"
+            if key == "text" else "name"
+            if key == "code" else "source"): value
+            for key, value in error.items()} | {"source":"value"}
 
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
