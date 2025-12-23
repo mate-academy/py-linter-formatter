@@ -5,7 +5,7 @@ def format_linter_error(error: dict) -> dict:
             if ky == "code" else "source"):
                 (vl if ky in ["line_number", "column_number",
                               "text", "code"] else "flake8")
-       for ky, vl in error.items()}
+            for ky, vl in error.items()}
 
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
