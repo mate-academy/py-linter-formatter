@@ -176,7 +176,7 @@ print(format_single_linter_file(file_path="./source_code_2.py", errors=errors))
             }
         ], 
     "path": "./source_code_2.py", 
-    "status": "failed"
+    "status": "failed" 
 }
 ```
 
