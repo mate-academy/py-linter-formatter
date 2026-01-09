@@ -8,20 +8,15 @@ def format_linter_error(error: dict) -> dict:
     }
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
-    formatted_errors = [format_linter_error(err) for err in errors]
-    status = "failed" if formatted_errors else "passed"
     return {
         "path": file_path,
-        "errors": formatted_errors,
-        "status": status
+        "errors": [format_linter_error(err) for err in errors],
+        "status": "failed" if errors else "passed"
     }
 
 
 def format_linter_report(linter_report: dict) -> list:
-    return [
-        format_single_linter_file(path, errors)
-        for path, errors in linter_report.items()
-    ]
+    return [format_single_linter_file(path, errs) for path, errs in linter_report.items()]
 
 error = {"code": "E501", "line_number": 18, "column_number": 80, "text": "line too long", "physical_line": "..."}
 print(format_linter_error(error))
