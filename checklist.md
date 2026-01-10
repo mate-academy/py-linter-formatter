@@ -1,4 +1,4 @@
-# Сheck Your Code Against the Following Points
+# Check Your Code Against the Following Points
 
 ## Don't Repeat Yourself
 
@@ -14,14 +14,14 @@ Good example:
 
 ```python
 my_dict = {"one": "a", "two": "b"}
-[(number + " " + letter) for (number, letter) in my_dict.items()]
+var = [(number + " " + letter) for (number, letter) in my_dict.items()]
 ```
 
 Bad example:
 
 ```python
 my_dict = {"one": "a", "two": "b"}
-[(k + "  " + v) for (k, v) in my_dict.items()]
+var = [(k + "  " + v) for (k, v) in my_dict.items()]
 ```
 
 While creating a dictionary — write key-value pairs in a single row. The curly braces must be located in one of two options: open and start with the text or have a line break between the text. 
@@ -36,7 +36,7 @@ my_dict = {
 
 ```
 
-Also a good example:
+Also, a good example:
 
 ```python
 my_dict = {"greeting": "Good morning, have a nice day!", 
