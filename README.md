@@ -1,6 +1,6 @@
 # Linter formatter
 
-Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before starting.
+Read [the guideline](https://githuflakeb.com/mate-academy/py-task-guideline/blob/main/README.md) before starting.
 
 The `flake8` linter gives the following error report when checking a directory with source code files:
 
@@ -15,7 +15,7 @@ errors = {
             "column_number": 80,
             "text": "line too long (99 > 79 characters)",
             "physical_line": '    return f"I like to filter, rounding, doubling, '
-            "store and decorate numbers: {', '.join(items)}!\"",
+                             "store and decorate numbers: {', '.join(items)}!\"",
         },
         {
             "code": "W292",
@@ -24,7 +24,7 @@ errors = {
             "column_number": 100,
             "text": "no newline at end of file",
             "physical_line": '    return f"I like to filter, rounding, doubling, '
-            "store and decorate numbers: {', '.join(items)}!\"",
+                             "store and decorate numbers: {', '.join(items)}!\"",
         },
     ],
     "./source_code_1.py": [
@@ -35,7 +35,7 @@ errors = {
             "column_number": 74,
             "text": "multiple statements on one line (semicolon)",
             "physical_line": '        new_items = [f"{key} -> {value}" for key, '
-            "value in items.items()]; return func(new_items)\n",
+                             "value in items.items()]; return func(new_items)\n",
         },
         {
             "code": "E501",
@@ -44,7 +44,7 @@ errors = {
             "column_number": 80,
             "text": "line too long (97 > 79 characters)",
             "physical_line": '        new_items = [f"{key} -> {value}" for key, '
-            "value in items.items()]; return func(new_items)\n",
+                             "value in items.items()]; return func(new_items)\n",
         },
         {
             "code": "E302",
@@ -69,7 +69,7 @@ errors = {
             "column_number": 80,
             "text": "line too long (99 > 79 characters)",
             "physical_line": '    return f"I like to filter, rounding, doubling, '
-            "store and decorate numbers: {', '.join(items)}!\"\n",
+                             "store and decorate numbers: {', '.join(items)}!\"\n",
         },
     ],
     "./test_source_code_1.py": [
@@ -101,11 +101,12 @@ errors = {
 }
 ```
 
-Here `errors` is a dictionary, where the keys are the path to the file, 
+Here `errors` is a dictionary, where the keys are the path to the file,
 and the value of this key is a list of errors, where each is a dictionary.
 
 But we store the execution results in a slightly different format.
 Write 3 functions to convert the report into the format we need:
+
 1. `format_linter_error` - formats a single error:
 
 ```python
@@ -116,22 +117,22 @@ error = {
     "column_number": 80,
     "text": "line too long (99 > 79 characters)",
     "physical_line": '    return f"I like to filter, rounding, doubling, '
-    "store and decorate numbers: {', '.join(items)}!\"",
+                     "store and decorate numbers: {', '.join(items)}!\"",
 }
 
 print(format_linter_error(error=error))
 # The output will be:
 {
-    "line": 18, 
-    "column": 80, 
-    "message": "line too long (99 > 79 characters)", 
-    "name": "E501", 
+    "line": 18,
+    "column": 80,
+    "message": "line too long (99 > 79 characters)",
+    "name": "E501",
     "source": "flake8"
 }
 ```
 
 2. `format_single_linter_file` - formats all errors for a particular file and adds the `path` key — path to the file,
-and the `status` key — "failed" if there are errors, "passed" if there are no errors:
+   and the `status` key — "failed" if there are errors, "passed" if there are no errors:
 
 ```python
 errors = [
@@ -140,9 +141,9 @@ errors = [
         "filename": "./source_code_2.py",
         "line_number": 18,
         "column_number": 80,
-         "text": "line too long (99 > 79 characters)",
-        "physical_line": '    return f"I like to filter, rounding, doubling, ' 
-        "store and decorate numbers: {', '.join(items)}!\"",
+        "text": "line too long (99 > 79 characters)",
+        "physical_line": '    return f"I like to filter, rounding, doubling, '
+                         "store and decorate numbers: {', '.join(items)}!\"",
     },
     {
         "code": "W292",
@@ -151,31 +152,31 @@ errors = [
         "column_number": 100,
         "text": "no newline at end of file",
         "physical_line": '    return f"I like to filter, rounding, doubling, '
-        "store and decorate numbers: {', '.join(items)}!\"",
+                         "store and decorate numbers: {', '.join(items)}!\"",
     },
 ]
 
 print(format_single_linter_file(file_path="./source_code_2.py", errors=errors))
 # The output will be:
 {
-    "errors": 
+    "errors":
         [
             {
-                "line": 18, 
-                "column": 80, 
-                "message": "line too long (99 > 79 characters)", 
-                "name": "E501", 
+                "line": 18,
+                "column": 80,
+                "message": "line too long (99 > 79 characters)",
+                "name": "E501",
                 "source": "flake8"
-            }, 
+            },
             {
-                "line": 18, 
-                "column": 100, 
-                "message": "no newline at end of file", 
-                "name": "W292", 
+                "line": 18,
+                "column": 100,
+                "message": "no newline at end of file",
+                "name": "W292",
                 "source": "flake8"
             }
-        ], 
-    "path": "./source_code_2.py", 
+        ],
+    "path": "./source_code_2.py",
     "status": "failed"
 }
 ```
@@ -194,7 +195,7 @@ report_file = {
                 "column_number": 80,
                 "text": "line too long (99 > 79 characters)",
                 "physical_line": '    return f"I like to filter, rounding, doubling, '
-                "store and decorate numbers: {', '.join(items)}!\"",
+                                 "store and decorate numbers: {', '.join(items)}!\"",
             },
             {
                 "code": "W292",
@@ -203,7 +204,7 @@ report_file = {
                 "column_number": 100,
                 "text": "no newline at end of file",
                 "physical_line": '    return f"I like to filter, rounding, doubling, '
-                "store and decorate numbers: {', '.join(items)}!\"",
+                                 "store and decorate numbers: {', '.join(items)}!\"",
             },
         ]
 }
@@ -212,29 +213,29 @@ print(format_linter_report(linter_report=report_file))
 # The output will be:
 [
     {
-        "errors": [], 
-        "path": "./test_source_code_2.py", 
+        "errors": [],
+        "path": "./test_source_code_2.py",
         "status": "passed"
-    }, 
+    },
     {
-        "errors": 
+        "errors":
             [
                 {
-                    "line": 18, 
-                    "column": 80, 
-                    "message": "line too long (99 > 79 characters)", 
-                    "name": "E501", 
+                    "line": 18,
+                    "column": 80,
+                    "message": "line too long (99 > 79 characters)",
+                    "name": "E501",
                     "source": "flake8"
-                }, 
+                },
                 {
-                    "line": 18, 
-                    "column": 100, 
-                    "message": "no newline at end of file", 
-                    "name": "W292", 
+                    "line": 18,
+                    "column": 100,
+                    "message": "no newline at end of file",
+                    "name": "W292",
                     "source": "flake8"
                 }
-            ], 
-        "path": "./source_code_2.py", 
+            ],
+        "path": "./source_code_2.py",
         "status": "failed"
     }
 ]
