@@ -73,8 +73,6 @@ def test_format_linter_error(error_linter, error_mate):
         f"Function 'format_linter_error' should return {error_mate}, "
         f"when 'error' equals to {error_linter}"
     )
-
-
 @pytest.mark.parametrize(
     "func",
     [
