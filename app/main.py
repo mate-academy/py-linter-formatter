@@ -14,6 +14,3 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
 def format_linter_report(linter_report: dict) -> list:
     return [format_single_linter_file(source_code, report)
             for source_code, report in linter_report.items()]
-"""
-Test commens
-"""
