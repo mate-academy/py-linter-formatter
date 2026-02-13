@@ -10,7 +10,12 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
     return {"errors": [format_linter_error(error)
                        for error in errors if error["filename"] == file_path],
             "path": file_path,
-            "status": "failed" if sum(1 for error in errors if error["filename"] == file_path) > 0 else "passed"}
+            "status": (
+                "failed"
+                if sum(
+                    1 for error in errors if error["filename"] == file_path
+                ) > 0
+                else "passed")}
 
 
 def format_linter_report(linter_report: dict) -> list:
