@@ -15,7 +15,7 @@ errors = {
             "column_number": 80,
             "text": "line too long (99 > 79 characters)",
             "physical_line": '    return f"I like to filter, rounding, doubling, '
-            "store and decorate numbers: {', '.join(items)}!\"",
+            "store and decorate numbers: {', '.join(items)}!\"",  
         },
         {
             "code": "W292",
