@@ -7,8 +7,19 @@ def format_linter_error(error: dict) -> dict:
 
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
-    # write your code here
-    pass
+    return {
+        "errors": [
+            {
+                "line": e["line_number"],
+                "column": e["column_number"],
+                "message": e["text"],
+                "name": e["code"],
+                "source": "flake8"
+            } for e in errors
+        ],
+        "path": file_path,
+        "status": "failed" if errors else "passed"
+    }
 
 
 def format_linter_report(linter_report: dict) -> list:
