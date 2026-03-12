@@ -8,6 +8,16 @@ clear_dict = {
     "source":"source"
 }
 
+def gets_errors(errors: list, file_path: str) -> list:
+     error = [
+            format_linter_error(error)
+            for error in errors
+            if error.get("filename") == file_path
+        ]
+
+     satus = "failed" if error else "passed"
+
+     return [error, satus]
 
 def format_linter_error(error: dict) -> dict:
     return {
@@ -18,18 +28,15 @@ def format_linter_error(error: dict) -> dict:
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
     return {
-        "errors":[
-            format_linter_error(error)
-            for error in errors
-            if error.get("filename") == file_path
-        ],
+        "errors":gets_errors(file_path=file_path, errors=errors)[0],
         "path":file_path,
-        "status":  "failed" if len(errors) > 0 else "passed"
+        "status":  gets_errors(file_path=file_path, errors=errors)[1]
     }
 
 
 def format_linter_report(linter_report: dict) -> list:
     return [
-        format_single_linter_file(line_rep_key, linter_report.get(line_rep_key))
-        for line_rep_key in linter_report.keys()
+        format_single_linter_file(linter_report_key, linter_report.get(linter_report_key))
+        for linter_report_key in linter_report.keys()
     ]
+
