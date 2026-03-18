@@ -18,6 +18,7 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
         # List Comprehension jako wartość klucza "errors"
     }
 
+
 def format_linter_report(linter_report: dict) -> list:
     return [
         format_single_linter_file(file_path, errors)
