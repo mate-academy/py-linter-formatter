@@ -37,7 +37,7 @@ def format_linter_report(linter_report: dict) -> list:
             }
             for error in errors
             if errors
-    ] if errors else [],
+        ] if errors else [],
         "path": file_path,
         "status": "failed" if errors else "passed"
     } for file_path, errors in linter_report.items()
