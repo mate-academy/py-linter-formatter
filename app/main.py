@@ -21,19 +21,3 @@ def format_linter_report(linter_report: dict) -> list:
         format_single_linter_file(file_path, errors)
         for file_path, errors in linter_report.items()
     ]
-
-
-print(format_linter_report({
-            "./source_code_2.py": [
-                {
-                    "code": "E501",
-                    "filename": "./source_code_2.py",
-                    "line_number": 18,
-                    "column_number": 80,
-                    "text": "line too long (99 > 79 characters)",
-                    "physical_line": "example",
-                }
-            ]
-        }))
-
-
