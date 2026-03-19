@@ -76,12 +76,9 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
 def format_linter_report(linter_report: dict) -> list:
 
      return [
+         {"errors": [], "path": next(iter(linter_report)), "status": "passed"},
          {
-            "errors": [],
-            "path": next(iter(linter_report)),
-            "status": "passed"
-         },
-         {
-            format_single_linter_file(next(iter(linter_report)))
+             format_single_linter_file(path, value)
+             for path, value in list(linter_report.items())[1]
          }
      ]
