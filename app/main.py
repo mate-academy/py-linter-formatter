@@ -11,7 +11,7 @@ def format_linter_error(error: dict) -> dict:
     #
     # print(format_linter_error(error=error))
 
-    return {} if not error else {
+    return {
         "line": error["line_number"],
         "column": error["column_number"],
         "message": error["text"],
@@ -66,7 +66,8 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
     #     "status": "failed"
     # }
     return {
-        "errors": [
+        "errors": [] if not errors else
+        [
             format_linter_error(error) for error in errors
        ],
         "path": file_path,
@@ -75,50 +76,10 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
 
 def format_linter_report(linter_report: dict) -> list:
 
-#     return [
-
-    [
-
-    ]
-
-     for path, errors in linter_report.items():
-         for error in errors:
-
-
-    "path": path,
-    "status": >>>>>>>>>>>>>
-         {"errors": [], "path": next(iter(linter_report)), "status": "passed"},
+     return [
          {
-             format_single_linter_file(path, value)
-             for path, value in list(linter_report.items())[1]
+             format_single_linter_file(file_path, errors)
+             for file_path, errors in linter_report.items()
          }
-#     ]
-"""
-{
-    "main.py": [
-        {"line_number": 10, "column_number": 5, "text": "Missing whitespace", "code": "E201"}
-    ],
-    "utils.py": []
-}
+         ]
 
-[
-    {
-        "errors": [
-            {
-                "line": 10,
-                "column": 5,
-                "message": "Missing whitespace",
-                "name": "E201",
-                "source": "flake8"
-            }
-        ],
-        "path": "main.py",
-        "status": "failed"
-    },
-    {
-        "errors": [],
-        "path": "utils.py",
-        "status": "passed"
-    }
-]
-"""
