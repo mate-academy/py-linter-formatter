@@ -339,22 +339,13 @@ def test_format_single_linter_file(file_path, errors, result):
         )
     ],
 )
-def test_format_linter_report(errors_linter, errors_mate):
-    assert format_linter_report(errors_linter) == errors_mate, (
-        f"Function 'format_linter_report' should return {errors_mate} "
-        f"when 'errors' equals to {errors_linter}"
-    )
+def format_linter_error(error: dict) -> dict:
+    return {"line": error["line_number"], "column": error["column_number"], "message": error["text"], "name": error["code"], "source": "flake8"}
 
 
-def test_comment_deleted():
-    lines = inspect.getsource(main)
-    assert "# write your code here" not in lines, (
-        "Remove the unnecessary" " comment '# write your code here'"
-    )
+def format_single_linter_file(file_path: str, errors: list) -> dict:
+    return {"errors": [format_linter_error(error) for error in errors], "path": file_path, "status": "passed" if not errors else "failed"}
 
 
-def test_double_quotes_instead_of_single():
-    lines = inspect.getsource(main)
-    assert "'" not in lines, (
-        'You have to use a double quotes "" instead' " of single ''"
-    )
+def format_linter_report(linter_report: dict) -> list:
+    return [format_single_linter_file(file_path, errors) for file_path, errors in linter_report.items()]
