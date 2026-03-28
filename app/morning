@@ -1,0 +1,17 @@
+from datetime import datetime
+
+def coupon_code(
+    entered_code: str,
+    correct_code: str,
+    current_date: str,
+    expiration_date: str,
+) -> bool:
+
+
+    if entered_code != correct_code:
+        return False
+        
+    current = datetime.strptime(current_date, "%B %d, %Y")
+    expiration = datetime.strptime(expiration_date, "%B %d, %Y")
+
+    return current <= expiration
