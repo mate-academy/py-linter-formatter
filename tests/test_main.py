@@ -1,3 +1,4 @@
+from typing import Any, Callable, Literal
 import pytest
 import ast
 import inspect
@@ -68,7 +69,9 @@ from app.main import (
         ),
     ],
 )
-def test_format_linter_error(error_linter, error_mate):
+
+
+def test_format_linter_error(error_linter: dict[str, str | int], error_mate: dict[str, int | str]):
     assert format_linter_error(error_linter) == error_mate, (
         f"Function 'format_linter_error' should return {error_mate}, "
         f"when 'error' equals to {error_linter}"
@@ -83,7 +86,7 @@ def test_format_linter_error(error_linter, error_mate):
         format_linter_report,
     ],
 )
-def test_format_functions_one_line(func):
+def test_format_functions_one_line(func: Callable[..., dict] | Callable[..., dict] | Callable[..., list]):
     code = inspect.getsource(func)
     assert (
         isinstance(ast.parse(code).body[0].body[0], ast.Return) is True
@@ -138,7 +141,7 @@ def test_format_functions_one_line(func):
         )
     ],
 )
-def test_format_single_linter_file(file_path, errors, result):
+def test_format_single_linter_file(file_path: Literal['./source_code_2.py'], errors: dict[str, Any], result: dict[str, list[dict[str, Any]] | str]):
     assert format_single_linter_file(file_path, errors) == result, (
         f"Function 'format_single_linter_file' should return {result}, "
         f"when 'file_path' equals to {file_path}, "
@@ -339,7 +342,7 @@ def test_format_single_linter_file(file_path, errors, result):
         )
     ],
 )
-def test_format_linter_report(errors_linter, errors_mate):
+def test_format_linter_report(errors_linter: dict[str, list[dict[str, Any]]], errors_mate: dict[str, Any]):
     assert format_linter_report(errors_linter) == errors_mate, (
         f"Function 'format_linter_report' should return {errors_mate} "
         f"when 'errors' equals to {errors_linter}"
