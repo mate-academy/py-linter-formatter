@@ -2,6 +2,7 @@ import pytest
 import ast
 import inspect
 
+from app import main
 from app.main import (
     format_linter_error,
     format_single_linter_file,
@@ -342,4 +343,18 @@ def test_format_linter_report(errors_linter, errors_mate):
     assert format_linter_report(errors_linter) == errors_mate, (
         f"Function 'format_linter_report' should return {errors_mate} "
         f"when 'errors' equals to {errors_linter}"
+    )
+
+
+def test_comment_deleted():
+    lines = inspect.getsource(main)
+    assert "# write your code here" not in lines, (
+        "Remove the unnecessary" " comment '# write your code here'"
+    )
+
+
+def test_double_quotes_instead_of_single():
+    lines = inspect.getsource(main)
+    assert "'" not in lines, (
+        'You have to use a double quotes "" instead' " of single ''"
     )
