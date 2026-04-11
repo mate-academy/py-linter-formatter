@@ -14,7 +14,7 @@ def format_linter_error(error: dict[str, Any]) -> dict[str, Any]:
 def format_single_linter_file(file_path: str,
                               errors: list[dict[str, Any]]) -> dict[str, Any]:
     return {
-        "errors": [format_linter_error(e) for e in errors],
+        "errors": [format_linter_error(error) for error in errors],
         "path": file_path,
         "status": "failed" if errors else "passed"
     }
