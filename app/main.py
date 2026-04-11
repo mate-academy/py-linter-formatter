@@ -1,29 +1,20 @@
 from typing import Any
 
 
-def format_linter_error(error: dict[str, Any]) -> dict[str, Any]:
-    return {
-        "line": error["line_number"],
-        "column": error["column_number"],
-        "message": error["text"],
-        "name": error["code"],
-        "source": "flake8"
-    }
+def format_linter_error(
+    error: dict[str, Any]
+) -> dict[str, Any]:
+    return {"line": error["line_number"], "column": error["column_number"], "message": error["text"], "name": error["code"], "source": "flake8"}  # noqa: E501
 
 
-def format_single_linter_file(file_path: str,
-                              errors: list[dict[str, Any]]) -> dict[str, Any]:
-    return {
-        "errors": [format_linter_error(error) for error in errors],
-        "path": file_path,
-        "status": "failed" if errors else "passed"
-    }
+def format_single_linter_file(
+    file_path: str,
+    errors: list[dict[str, Any]]
+) -> dict[str, Any]:
+    return {"errors": [format_linter_error(error) for error in errors], "path": file_path, "status": "failed" if errors else "passed"}  # noqa: E501
 
 
 def format_linter_report(
-        linter_report: dict[str, list[dict[str, Any]]]
+    linter_report: dict[str, list[dict[str, Any]]]
 ) -> list[dict[str, Any]]:
-    return [
-        format_single_linter_file(path, err_list)
-        for path, err_list in linter_report.items()
-    ]
+    return [format_single_linter_file(path, err_list) for path, err_list in linter_report.items()]  # noqa: E501
