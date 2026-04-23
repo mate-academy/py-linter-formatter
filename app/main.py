@@ -5,9 +5,10 @@ def format_linter_error(error: dict) -> dict:
 
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
-    return {"errors": [format_linter_error(error) for error in errors], "path": file_path,
-            "status": "passed" if len(errors) < 1 else "failed"}
+    return {"errors": [format_linter_error(e) for e in errors],
+            "path": file_path,
+            "status": "failed" if errors else "passed"}
 
 
 def format_linter_report(linter_report: dict) -> list:
-    return [format_single_linter_file(key, val) for key, val in linter_report.items()]
+    return [format_single_linter_file(k, v) for k, v in linter_report.items()]
