@@ -101,11 +101,7 @@ errors = {
 }
 ```
 
-Here `errors` is a dictionary, where the keys are the path to the file, 
-and the value of this key is a list of errors, where each is a dictionary.
-
-But we store the execution results in a slightly different format.
-Write 3 functions to convert the report into the format we need:
+c
 1. `format_linter_error` - formats a single error:
 
 ```python
