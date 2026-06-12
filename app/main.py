@@ -6,6 +6,7 @@ error_keys = {
     "flake8": "source",
 }
 
+
 def format_linter_error(error: dict) -> dict:
     return {
         value: error[key] if key in error else key
