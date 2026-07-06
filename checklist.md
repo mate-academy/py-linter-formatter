@@ -30,7 +30,7 @@ Good example:
 
 ```python
 my_dict = {
-	"greeting": "Good morning, have a nice day!", 
+	"greeting": "Good morning, have a nice day!",
 	"answer": "Good morning, thanks!"
 }
 

@@ -17,7 +17,7 @@ errors = {
             "physical_line": '    return f"I like to filter, rounding, doubling, '
             "store and decorate numbers: {', '.join(items)}!\"",
         },
-        {
+        {''
             "code": "W292",
             "filename": "./source_code_2.py",
             "line_number": 18,
