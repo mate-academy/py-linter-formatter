@@ -1,5 +1,3 @@
-from _pytest._py import path
-
 
 def format_linter_error(error: dict) -> dict:
     return {
