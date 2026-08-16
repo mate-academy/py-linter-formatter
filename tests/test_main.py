@@ -358,3 +358,4 @@ def test_double_quotes_instead_of_single():
     assert "'" not in lines, (
         'You have to use a double quotes "" instead' " of single ''"
     )
+    
