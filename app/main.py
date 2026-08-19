@@ -5,7 +5,7 @@ error = {
     "column_number": 80,
     "text": "line too long (99 > 79 characters)",
     "physical_line": (
-        'return f"I like to filter, rounding, doubling,'
+        "return f\"I like to filter, rounding, doubling, "
         "store and decorate numbers: {', '.join(items)}!\""
     ),
 }
@@ -32,7 +32,7 @@ errors = [
         "column_number": 80,
         "text": "line too long (99 > 79 characters)",
         "physical_line": (
-            'return f"I like to filter, rounding, doubling,'
+            "return f\"I like to filter, rounding, doubling, "
             "store and decorate numbers: {', '.join(items)}!\""
         ),
     },
@@ -43,7 +43,7 @@ errors = [
         "column_number": 100,
         "text": "no newline at end of file",
         "physical_line": (
-            'return f"I like to filter, rounding, doubling,'
+            "return f\"I like to filter, rounding, doubling, "
             "store and decorate numbers: {', '.join(items)}!\""
         ),
     },
@@ -76,7 +76,7 @@ linter_report = {
                 "column_number": 80,
                 "text": "line too long (99 > 79 characters)",
                 "physical_line": (
-                    'return f"I like to filter, rounding, doubling,'
+                    "return f\"I like to filter, rounding, doubling, "
                     "store and decorate numbers: {', '.join(items)}!\""
                 ),
             },
@@ -87,7 +87,7 @@ linter_report = {
                 "column_number": 100,
                 "text": "no newline at end of file",
                 "physical_line": (
-                    'return f"I like to filter, rounding, doubling,'
+                    "return f\"I like to filter, rounding, doubling, "
                     "store and decorate numbers: {', '.join(items)}!\""
                 ),
             },
