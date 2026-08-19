@@ -47,20 +47,14 @@ errors = [
 def format_single_linter_file(file_path: str, errors: list) -> dict:
 
     return {
-        "errors": [
-            {
-                "line": error["line_number"],
-                "column": error["column_number"],
-                "message": error["text"],
-                "name": error["code"],
-                "source": "flake8"
-            }
-
-            for error in errors
-        ],
+        "errors": [format_linter_error(e) for e in errors],
         "path": file_path,
         "status": "failed"
-    } if errors else "passed"
+    } if errors else {
+        "errors": {},
+        "path": file_path,
+        "status": "passed"
+    }
 
 
 format_single_linter_file("./source_code_2.py", errors)
@@ -95,16 +89,7 @@ def format_linter_report(linter_report: dict) -> list:
 
     return [
         {
-            "errors": [
-                {
-                    "line": error["line_number"],
-                    "column": error["column_number"],
-                    "message": error["text"],
-                    "name": error["code"],
-                    "source": "flake8"
-                }
-                for error in errors
-            ],
+            "errors": [format_linter_error(e) for e in errors],
             "path": file,
             "status": "failed"
         }
