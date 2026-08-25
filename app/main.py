@@ -1,12 +1,12 @@
 error_key_map = {
-    "line_number": "line", 
-    "column_number": "column", 
-    "text": "message", 
+    "line_number": "line",
+    "column_number": "column",
+    "text": "message",
     "code": "name"
-    }
+}
 
 def format_linter_error(error: dict) -> dict:
-    return {error_key_map.get(key): (value if key != "physical_line" else "flake8") for key, value in error.items() if key in error_key_map}
+    return {error_key_map.get(key): value for key, value in error.items() if key in error_key_map} | {"source": "flake8"}
 
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
