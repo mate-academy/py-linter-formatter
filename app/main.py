@@ -5,7 +5,7 @@ def format_linter_error(error: dict) -> dict:
         "message": error["text"],
         "name": error["code"],
         "source": "flake8"
-    } if error else {}
+    }
 
 
 def format_single_linter_file(file_path: str, errors: list) -> dict:
@@ -18,6 +18,6 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
 
 def format_linter_report(linter_report: dict) -> list:
     return [
-        format_single_linter_file(key, linter_report[key])
-        for key in linter_report
+        format_single_linter_file(file_path, error)
+        for file_path, error in linter_report.items()
     ]
