@@ -122,10 +122,11 @@ error = {
 print(format_linter_error(error=error))
 # The output will be:
 {
-    "line": 18, 
-    "column": 80, 
-    "message": "line too long (99 > 79 characters)", 
-    "name": "E501", 
+    return {
+    "line": error["line_number"],
+    "column": error["column_number"],
+    "message": error["text"],
+    "name": error["code"],
     "source": "flake8"
 }
 ```
@@ -158,27 +159,25 @@ errors = [
 print(format_single_linter_file(file_path="./source_code_2.py", errors=errors))
 # The output will be:
 {
-    "errors": 
-        [
-            {
-                "line": 18, 
-                "column": 80, 
-                "message": "line too long (99 > 79 characters)", 
-                "name": "E501", 
-                "source": "flake8"
-            }, 
-            {
-                "line": 18, 
-                "column": 100, 
-                "message": "no newline at end of file", 
-                "name": "W292", 
-                "source": "flake8"
-            }
-        ], 
-    "path": "./source_code_2.py", 
+    "errors": [
+        {
+            "line": 18,
+            "column": 80,
+            "message": "line too long (99 > 79 characters)",
+            "name": "E501",
+            "source": "flake8"
+        },
+        {
+            "line": 18,
+            "column": 100,
+            "message": "no newline at end of file",
+            "name": "W292",
+            "source": "flake8"
+        }
+    ],
+    "path": "./source_code_2.py",
     "status": "failed"
 }
-```
 
 3. `format_linter_report` - formats all errors for all report files:
 
@@ -217,28 +216,14 @@ print(format_linter_report(linter_report=report_file))
         "status": "passed"
     }, 
     {
-        "errors": 
-            [
-                {
-                    "line": 18, 
-                    "column": 80, 
-                    "message": "line too long (99 > 79 characters)", 
-                    "name": "E501", 
-                    "source": "flake8"
-                }, 
-                {
-                    "line": 18, 
-                    "column": 100, 
-                    "message": "no newline at end of file", 
-                    "name": "W292", 
-                    "source": "flake8"
-                }
-            ], 
+        "errors": [
+            {"line": 18, "column": 80, "message": "line too long (99 > 79 characters)", "name": "E501", "source": "flake8"}, 
+            {"line": 18, "column": 100, "message": "no newline at end of file", "name": "W292", "source": "flake8"}
+        ], 
         "path": "./source_code_2.py", 
         "status": "failed"
     }
 ]
-```
 
 All functions must contain only the `return` keyword.
 
