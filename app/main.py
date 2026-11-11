@@ -25,4 +25,3 @@ def format_linter_report(linter_report: dict) -> list:
         format_single_linter_file(file_path, file_errors)
         for file_path, file_errors in linter_report.items()
     ]
-
