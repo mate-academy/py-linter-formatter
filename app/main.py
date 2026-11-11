@@ -1,6 +1,6 @@
 def format_linter_error(error: dict) -> dict:
     return {
-        "line": error["line_number"],           # the base dictionary format we will be using - DRY
+        "line": error["line_number"],
         "column": error["column_number"],
         "message": error["text"],
         "name": error["code"],
@@ -21,6 +21,10 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
 
 def format_linter_report(linter_report: dict) -> list:
     return [
-        format_single_linter_file(file_path, file_errors)   # list comprehension
-        for file_path, file_errors in linter_report.items() # .items() converts dictionary into a view of tuples that file_path, file_errors unpack
+        format_single_linter_file(file_path, file_errors)
+        for file_path, file_errors in linter_report.items() 
     ]
+
+# line 3: the base dictionary format we will be using - DRY
+# line 24: list comprehension
+# line 25: .items() converts dictionary into a view of tuples that file_path, file_errors unpack
