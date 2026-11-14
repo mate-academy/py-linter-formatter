@@ -101,4 +101,5 @@ errors = {
         },
     ],
 }
+
 print(format_linter_report(errors))
