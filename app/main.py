@@ -12,16 +12,17 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
     return {
         "path": file_path,
         "errors": [
-            format_linter_error(error) 
-            for error in errors 
+            format_linter_error(error)
+            for error in errors
         ],
         "status": "failed" if errors else "passed"
     }
-    
+
 
 def format_linter_report(linter_report: dict) -> list:
     return [
-        format_single_linter_file(report_key, report_value) 
+        format_single_linter_file(report_key, report_value)
         for report_key, report_value in linter_report.items()
     ]
+
 
