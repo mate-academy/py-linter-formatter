@@ -25,4 +25,3 @@ def format_linter_report(linter_report: dict) -> list:
         for report_key, report_value in linter_report.items()
     ]
 
-
